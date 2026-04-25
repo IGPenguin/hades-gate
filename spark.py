@@ -97,7 +97,19 @@ def cultivate_arche():
 
     print(f"✨ Arche inscribed at {ARCHE}")
 
+def check_ghostwire():
+    """Warn if the cwd has no .hades symlink pointing to hades-gate."""
+    local_hades = os.path.join(os.getcwd(), ".hades")
+    if os.path.islink(local_hades):
+        target = os.path.realpath(local_hades)
+        if target != os.path.realpath(HADES_PATH):
+            print(f"⚠️  Warning: .hades symlink points to {target}, not {HADES_PATH}")
+    elif os.path.isdir(local_hades):
+        print("⚠️  Warning: .hades is a plain directory, not a Ghostwire symlink.")
+    # No .hades at all means we're running from hades-gate itself — fine.
+
 def ignite():
+    check_ghostwire()
     for file_path in [MANIFESTO, PAPYRUS, STYX]:
         if not os.path.exists(file_path):
             print(f"❌ Error: {file_path} not found.")
@@ -122,9 +134,10 @@ def ignite():
 --- CURRENT SEEDS FROM THE STYX ---
 {styx}
 
-INSTRUCTION: 
-Using the Arche as your ground truth and the Styx as your objective, generate 3 Prions. 
+INSTRUCTION:
+Using the Arche as your ground truth and the Styx as your objective, generate 3 Prions.
 Output ONLY the markdown content for prions.md.
+Do NOT include citation markers (e.g. [cite: X], [cite_start]) anywhere in your output.
 """
 
     t = threading.Thread(target=spinner)
@@ -142,6 +155,9 @@ Output ONLY the markdown content for prions.md.
 
     if result.returncode == 0:
         output = result.stdout.strip()
+        # Strip Gemini citation artifacts
+        output = re.sub(r'\[cite_start\]', '', output)
+        output = re.sub(r'\s*\[cite:\s*[\d,\s]+\]', '', output)
         with open(PRIONS, 'w') as f:
             f.write(output)
         
