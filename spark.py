@@ -1,15 +1,22 @@
 import os
 import subprocess
 
-# Configuration
-HADES_PATH = os.path.expanduser("~/projects/hades-gate/.hades") # Update path
+# --- UPDATE THIS LINE TO YOUR ACTUAL PATH ---
+# We use os.path.expanduser to handle the '~' correctly
+HADES_PATH = os.path.expanduser("~/Repositories/hades-gate/.hades")
+
 MANIFESTO = os.path.join(HADES_PATH, "manifesto.md")
 PAPYRUS = os.path.join(HADES_PATH, "papyrus.md")
 STYX = os.path.join(HADES_PATH, "styx.md")
 PRIONS = os.path.join(HADES_PATH, "prions.md")
 
 def ignite():
-    # Read our dead artifacts
+    # Safety check: Do the files actually exist?
+    for file_path in [MANIFESTO, PAPYRUS, STYX]:
+        if not os.path.exists(file_path):
+            print(f"❌ Error: {file_path} not found.")
+            return
+
     with open(MANIFESTO, 'r') as f: manifesto = f.read()
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
     with open(STYX, 'r') as f: styx = f.read()
