@@ -1,18 +1,18 @@
 import os
+import re
+import time
+import glob
+import sys
 import subprocess
 import threading
-import time
-import sys
-import glob
 
 # --- PATH CONFIGURATION ---
-PROJECT_ROOT = os.getcwd()  # Assumes you run from the project folder
-HADES_PATH = os.path.join(PROJECT_ROOT, ".hades")
+HADES_PATH = os.path.expanduser("~/Repositories/hades-gate/.hades")
 MANIFESTO = os.path.join(HADES_PATH, "manifesto.md")
 PAPYRUS = os.path.join(HADES_PATH, "papyrus.md")
 STYX = os.path.join(HADES_PATH, "styx.md")
 PRIONS = os.path.join(HADES_PATH, "prions.md")
-ARCHE = os.path.join(HADES_PATH, "arche.md")  # The project blueprint
+ARCHE = os.path.join(HADES_PATH, "arche.md")
 
 def spinner():
     """A simple terminal spinner to show life in the void."""
@@ -25,65 +25,93 @@ def spinner():
         i += 1
     sys.stdout.write("\r✨ The void has answered.      \n")
 
+def parse_js_skeleton(filepath):
+    """Parses a JS file and extracts only function signatures and classes."""
+    skeleton = []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if re.match(r'^(async\s+)?function\s+\w+', line):
+                    skeleton.append("  " + line.split('{')[0].strip() + " { ... }")
+                elif line.startswith("class "):
+                    skeleton.append("  " + line.split('{')[0].strip() + " { ... }")
+                elif re.match(r'^(const|let|var)\s+\w+\s*=\s*(\(.*?\)\s*=>|function|new\s+)', line):
+                    clean_line = line.split('{')[0].rstrip('=> ').strip()
+                    if "=>" not in clean_line and "function" not in clean_line:
+                        clean_line += " =>"
+                    skeleton.append("  " + clean_line + " { ... }")
+    except Exception as e:
+        skeleton.append(f"  // Error reading file: {e}")
+    return skeleton
+
 def cultivate_arche():
-    """Extracts the project DNA and writes it to arche.md."""
-    print("🌱 Cultivating the Arche (Python Edition)...")
+    """Extracts the project DNA and writes a clean, token-efficient arche.md."""
+    print("🌱 Cultivating the Semantic Arche...")
     
-    with open(ARCHE, "w") as arche:
+    PROJECT_ROOT = os.getcwd() 
+    
+    with open(ARCHE, "w", encoding="utf-8") as arche:
         arche.write(f"# THE ARCHE: PROJECT DNA\nInscribed: {time.ctime()}\n\n")
 
-        # 1. Identity (CLAUDE.md)
+        # 1. Core Identity (The FULL CLAUDE.md)
         claude_path = os.path.join(PROJECT_ROOT, "CLAUDE.md")
         if os.path.exists(claude_path):
-            with open(claude_path, "r") as f:
-                arche.write(f"## Project Identity (CLAUDE.md)\n{f.read()}\n\n")
+            arche.write("## Project Identity & Rules\n")
+            with open(claude_path, "r", encoding="utf-8") as f:
+                arche.write(f.read().strip() + "\n\n")
 
-        # 2. The Labyrinth (Directory Structure)
+        # 2. The Labyrinth (Strictly filtered directory map)
         arche.write("## The Labyrinth\n```text\n")
+        # Aggressive blacklist for build artifacts and caches
+        ignore_dirs = {
+            '.git', 'node_modules', '_site', 'assets', '.hades', 
+            'fonts', '.jekyll-cache', '_jekyll-cache', '.sass-cache', 'cleanup'
+        }
+        
         for root, dirs, files in os.walk(PROJECT_ROOT):
-            # Exclude noise
-            dirs[:] = [d for d in dirs if d not in ['.git', 'node_modules', '_site', 'assets', '.hades']]
+            dirs[:] = [d for d in dirs if d not in ignore_dirs]
             level = root.replace(PROJECT_ROOT, '').count(os.sep)
             indent = ' ' * 4 * (level)
-            arche.write(f"{indent}{os.path.basename(root)}/\n")
+            folder_name = os.path.basename(root)
+            if folder_name and folder_name != os.path.basename(PROJECT_ROOT): 
+                arche.write(f"{indent}{folder_name}/\n")
             sub_indent = ' ' * 4 * (level + 1)
             for f in files:
-                if not f.startswith('.'):
+                if not f.startswith('.') and not f.endswith(('png', 'jpg', 'svg', 'eot', 'ttf', 'woff', 'woff2')):
                     arche.write(f"{sub_indent}{f}\n")
         arche.write("```\n\n")
 
-        # 3. Logic Headers (Scanning JS directory)
+        # 3. The API Surface (Parsed JS Skeletons)
         js_dir = os.path.join(PROJECT_ROOT, "js")
         if os.path.exists(js_dir):
-            arche.write("## Core Logic Headers\n")
+            arche.write("## Core API Surface\n")
+            arche.write("*(Abstracted function signatures and classes)*\n\n")
             for f_path in glob.glob(f"{js_dir}/*.js"):
                 filename = os.path.basename(f_path)
-                with open(f_path, "r") as f:
-                    # Grab first 100 lines
-                    content = "".join([next(f, "") for _ in range(100)])
-                    arche.write(f"### {filename}\n```javascript\n{content}\n```\n\n")
+                skeleton = parse_js_skeleton(f_path)
+                if skeleton:
+                    arche.write(f"### {filename}\n```javascript\n")
+                    arche.write("\n".join(skeleton))
+                    arche.write("\n```\n\n")
 
     print(f"✨ Arche inscribed at {ARCHE}")
 
 def ignite():
-    # Basic existence check for core files
     for file_path in [MANIFESTO, PAPYRUS, STYX]:
         if not os.path.exists(file_path):
             print(f"❌ Error: {file_path} not found.")
             return
 
-    # Read the core framework files
     with open(MANIFESTO, 'r') as f: manifesto = f.read()
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
     with open(STYX, 'r') as f: styx = f.read()
 
-    # Attempt to read the Arche (Project DNA) if it exists
     arche_context = ""
     if os.path.exists(ARCHE):
         with open(ARCHE, 'r') as f:
             arche_context = f"\n--- THE ARCHE (PROJECT DNA) ---\n{f.read()}\n"
 
-    # Construct the Omnipotent Prompt
     combined_prompt = f"""
 {manifesto}
 {arche_context}
@@ -96,27 +124,22 @@ def ignite():
 
 INSTRUCTION: 
 Using the Arche as your ground truth and the Styx as your objective, generate 3 Prions. 
-Ensure the proposals account for the non-linear, random-path nature of the project.
 Output ONLY the markdown content for prions.md.
 """
 
-    # Start the spinner in a separate thread
     t = threading.Thread(target=spinner)
     t.start()
 
     try:
-        # Strike the flint: Call Gemini CLI
         result = subprocess.run(
             ["gemini", "-p", combined_prompt],
             capture_output=True,
             text=True
         )
     finally:
-        # Ensure the spinner stops even on crash
         t.do_run = False
         t.join()
 
-    # Materialize the results
     if result.returncode == 0:
         output = result.stdout.strip()
         with open(PRIONS, 'w') as f:
