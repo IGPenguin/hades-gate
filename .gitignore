@@ -1,3 +1,2 @@
-.env
-.hades/vault/
 __pycache__/
+*.session

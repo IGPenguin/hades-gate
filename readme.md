@@ -1,6 +1,10 @@
-# Hades Gate: Idea to execution framework
+# Hades Gate
 
-Short Summary:
+Status: Initialized
+
+Objective: Materialize the Void (Intent) into Reality (Code).
+
+Strategy:
 - The Brain: You provide the "Seed" (the task).
 - The Kitchen: Gemini proposes three ways to solve it based on your code history.
 - The Muscle: Claude Code executes the chosen path.
