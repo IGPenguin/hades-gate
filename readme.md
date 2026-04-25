@@ -4,7 +4,7 @@
 
 ## 🧠 Materialize your ideas into reality
 
-Hades Gate smoothens out the "human to vibe-coding" interface by analyzing your idea proposals vs your projects and proposing three distinct implementation paths.<br>
+**Hades Gate** smoothens out the "human to vibe-coding" interface by analyzing your idea vs your project and proposing three distinct implementation paths:<br>
 - **Option A:** The Fast Path (Minimum Viable Result)
 - **Option B:** The Dream Path (High Quality/Polished)
 - **Option C:** The Experimental Path (Outside the Box)
