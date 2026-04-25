@@ -35,6 +35,24 @@ hades() {
                 claude "Analyze .hades/prions.md and implement the full logic for Option $2. Follow all rules in .hades/manifesto.md."
             fi
             ;;
+	seed)
+            echo "🌱 Cultivating the Arche..."
+            local GATE_HOME="$HOME/Repositories/hades-gate"
+            {
+                echo "# THE ARCHE: PROJECT DNA"
+                tree -I 'node_modules|.git|playtests' --dirsfirst
+                echo -e "\n## Core Logic Headers"
+                for f in index.html main.js logging.js logic.js state.js; do
+                    if [ -f "$f" ]; then
+                        echo "### $f"
+                        echo '```javascript'
+                        head -n 80 "$f"
+                        echo -e '```\n'
+                    fi
+                done
+            } > "$GATE_HOME/.hades/arche.md"
+            echo "✨ Arche inscribed at $GATE_HOME/.hades/arche.md"
+            ;;
         *)
             echo "Usage: hades [genesis 'idea' | ignite | execute A/B/C]"
             ;;
