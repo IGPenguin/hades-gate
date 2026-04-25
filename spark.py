@@ -11,7 +11,7 @@ STYX = os.path.join(HADES_PATH, "styx.md")
 PRIONS = os.path.join(HADES_PATH, "prions.md")
 
 def ignite():
-    # Safety check: Do the files actually exist?
+    # Safety check
     for file_path in [MANIFESTO, PAPYRUS, STYX]:
         if not os.path.exists(file_path):
             print(f"❌ Error: {file_path} not found.")
@@ -21,25 +21,38 @@ def ignite():
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
     with open(STYX, 'r') as f: styx = f.read()
 
-    # Construct the prompt
-    full_prompt = f"Using this structure: {papyrus}\n\nAnalyze these seeds: {styx}"
+    # We "bake" the manifesto into the prompt since --system failed
+    combined_prompt = f"""
+{manifesto}
+
+STRUCTURE TO FOLLOW:
+{papyrus}
+
+CURRENT SEEDS FROM THE STYX:
+{styx}
+
+INSTRUCTION: 
+Generate the 3 Prions based on the latest seeds. 
+Output ONLY the markdown content for prions.md.
+"""
 
     print("⚡ Sending seeds to the void...")
     
-    # This calls your local gemini CLI
-    # Adjust the command name if your gemini CLI uses a different trigger
+    # Using -p/--prompt as suggested by your CLI error
     result = subprocess.run(
-        ["gemini", "--system", manifesto, full_prompt],
+        ["gemini", "-p", combined_prompt],
         capture_output=True,
         text=True
     )
 
     if result.returncode == 0:
+        # Clean up the output - sometimes CLIs add extra flair we don't want
+        output = result.stdout.strip()
         with open(PRIONS, 'w') as f:
-            f.write(result.stdout)
+            f.write(output)
         print(f"🦠 Prions materialized in {PRIONS}")
     else:
         print(f"❌ Ignition failed: {result.stderr}")
-
+        
 if __name__ == "__main__":
     ignite()
