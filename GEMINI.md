@@ -45,14 +45,14 @@ When generating proposals in `prions.md` (via `hades ignite`), you must ALWAYS p
 
 - `./install.sh`: Interactive setup script for new users.
 - `./hades`: Unified shell entry point for all commands.
-- `python3 spark.py survey`: Updates `arche.md` by scanning the project.
-- `python3 spark.py seed "intent"`: Appends intent to `styx.md`.
-- `python3 spark.py summon "query"`: Pulls tasks from the project backlog.
-- `python3 spark.py ignite`: Runs the `ignite` process.
+- `python3 hades.py survey`: Updates `arche.md` by scanning the project.
+- `python3 hades.py seed "intent"`: Appends intent to `styx.md`.
+- `python3 hades.py summon "query"`: Pulls tasks from the project backlog.
+- `python3 hades.py ignite`: Runs the `ignite` process.
 
 ## Workflow for Framework Maintenance
 
 When modifying `hades-gate` itself:
-1. Adhere to the patterns in `spark.py`.
+1. Adhere to the patterns in `hades.py`.
 2. Ensure any changes to `manifesto.md` or `papyrus.md` are documented and intentional.
 3. Respect that `styx.md`, `arche.md`, and `prions.md` are transient and ignored by git.

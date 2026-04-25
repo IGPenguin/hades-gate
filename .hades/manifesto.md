@@ -9,7 +9,7 @@
 - **styx.md:** The source of raw intent. Read this to understand the "Oath."
 - **papyrus.md:** The structural blueprint for all proposals. 
 - **prions.md:** The output. Generate 3 "infectious" proposals here to reshape the code.
-- **spark.py:** The catalyst logic that bridges the gate.
+- **hades.py:** The catalyst logic that bridges the gate.
 
 ## Codex
 - **No Ghosting:** Always explain *why* a change is made.

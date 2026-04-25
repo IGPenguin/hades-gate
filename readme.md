@@ -36,7 +36,7 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
       ├── .hades/
       │   ├── manifesto.md (Central Rules)
       │   └── papyrus.md   (Proposal Template)
-      └── spark.py         (The Catalyst)
+      └── hades.py         (The Catalyst)
              │
              │      [ GHOSTWIRE ]
              └──── (Symlink link) ────┐
@@ -53,7 +53,7 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 *   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
 *   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface). Built by `hades survey`.
 *   **The Prions (`prions.md`):** Gemini's output — three infectious paths ready to mutate your codebase.
-*   **The Spark (`spark.py`):** The catalyst logic that bridges the gate and manages the ritual.
+*   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
 
 ---
 
