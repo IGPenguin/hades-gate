@@ -1,8 +1,7 @@
 import os
 import subprocess
 
-# --- UPDATE THIS LINE TO YOUR ACTUAL PATH ---
-# We use os.path.expanduser to handle the '~' correctly
+# --- PATH CONFIGURATION ---
 HADES_PATH = os.path.expanduser("~/Repositories/hades-gate/.hades")
 
 MANIFESTO = os.path.join(HADES_PATH, "manifesto.md")
@@ -21,7 +20,7 @@ def ignite():
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
     with open(STYX, 'r') as f: styx = f.read()
 
-    # We "bake" the manifesto into the prompt since --system failed
+    # The Combined Prompt Ritual
     combined_prompt = f"""
 {manifesto}
 
@@ -38,23 +37,23 @@ Output ONLY the markdown content for prions.md.
 
     print("⚡ Sending seeds to the void...")
     
-    # Using -p/--prompt as suggested by your CLI error
+    # Execute the Gemini CLI
     result = subprocess.run(
         ["gemini", "-p", combined_prompt],
         capture_output=True,
         text=True
     )
 
-if result.returncode == 0:
+    # All this logic must live INSIDE the ignite() function
+    if result.returncode == 0:
         output = result.stdout.strip()
         with open(PRIONS, 'w') as f:
             f.write(output)
         
-        # --- NEW: ECHO TO TERMINAL ---
+        # --- ECHO TO TERMINAL ---
         print("\n" + "="*40)
         print("🧬 THE PRIONS HAVE MATERIALIZED")
         print("="*40)
-        # We'll print the output so you can see the options immediately
         print(output)
         print("="*40)
         print(f"\n✨ Proposals saved to {PRIONS}")
