@@ -25,11 +25,26 @@ cd ~/Repositories/hades-gate
 ```
 Follow the prompts to set up your `GEMINI_API_KEY`.
 
-#### 2. Shell Alias
-Add the following to your `~/.zshrc` or `~/.bashrc`:
-```bash
-alias hades='~/Repositories/hades-gate/hades'
+#### 2. Shell Function
+Add the following function to your `~/.zshrc` or `~/.bashrc`. It wraps the `hades` script and adds the optional `execute` command, which bridges directly to Claude CLI:
+```zsh
+hades() {
+    local GATE_BIN="$HOME/Repositories/hades-gate/hades"
+
+    if [[ "$1" == "execute" ]]; then
+        if [ -z "$2" ]; then
+            echo "❌ Please specify Path A, B, or C."
+        else
+            echo "🛠️ Summoning Claude to implement Path $2..."
+            claude "Analyze .hades/prions.md and implement the full logic for Option $2. Follow all rules in .hades/manifesto.md."
+        fi
+    else
+        "$GATE_BIN" "$@"
+    fi
+}
 ```
+
+> A plain `alias` works if you don't need `execute`. The function is preferred.
 
 #### 3. The Ghostwire (Symlink)
 Link your project into the Gate so it shares the `.hades/` state:
@@ -56,8 +71,8 @@ ln -s ~/Repositories/hades-gate/.hades .hades
 2. **Speak Intent:** `hades genesis "what you want"` — log the objective.
 3. **Consult the Fates:** `hades ignite` — Gemini returns three paths in `prions.md`.
 4. **Materialize:**
-   - **Option A (Live):** In your active Claude session, say *"implement Option B"*.
-   - **Option B (CLI):** If you have the optional `execute` alias, run `hades execute B`.
+   - **In your active Claude session:** say *"implement Option B"* — Claude reads `prions.md` with full context.
+   - **From the terminal:** `hades execute B` — bridges to Claude CLI directly.
 
 ---
 

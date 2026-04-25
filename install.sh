@@ -36,13 +36,25 @@ else
 fi
 
 # 3. Setup Shell Integration
+echo ""
 echo "🐚 Shell Integration"
-echo "To use 'hades' from anywhere, you can:"
-echo "A) Add this directory to your PATH"
-echo "B) Create an alias in your .zshrc or .bashrc"
-
-echo -e "\nRecommended alias (copy and paste into your .zshrc):"
-echo "alias hades='$GATE_HOME/hades'"
+echo "Add the following function to your ~/.zshrc (includes 'hades execute' → Claude bridge):"
+echo ""
+echo "hades() {"
+echo "    local GATE_BIN=\"$GATE_HOME/hades\""
+echo "    if [[ \"\$1\" == \"execute\" ]]; then"
+echo "        if [ -z \"\$2\" ]; then"
+echo "            echo \"❌ Please specify Path A, B, or C.\""
+echo "        else"
+echo "            echo \"🛠️ Summoning Claude to implement Path \$2...\""
+echo "            claude \"Analyze .hades/prions.md and implement the full logic for Option \$2. Follow all rules in .hades/manifesto.md.\""
+echo "        fi"
+echo "    else"
+echo "        \"\$GATE_BIN\" \"\$@\""
+echo "    fi"
+echo "}"
+echo ""
+echo "  (Or use a plain alias if you don't need 'execute': alias hades='$GATE_HOME/hades')"
 
 # 4. Finalize
 echo -e "\n✨ Hades Gate setup complete."
