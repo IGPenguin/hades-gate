@@ -45,14 +45,21 @@ Output ONLY the markdown content for prions.md.
         text=True
     )
 
-    if result.returncode == 0:
-        # Clean up the output - sometimes CLIs add extra flair we don't want
+if result.returncode == 0:
         output = result.stdout.strip()
         with open(PRIONS, 'w') as f:
             f.write(output)
-        print(f"🦠 Prions materialized in {PRIONS}")
+        
+        # --- NEW: ECHO TO TERMINAL ---
+        print("\n" + "="*40)
+        print("🧬 THE PRIONS HAVE MATERIALIZED")
+        print("="*40)
+        # We'll print the output so you can see the options immediately
+        print(output)
+        print("="*40)
+        print(f"\n✨ Proposals saved to {PRIONS}")
     else:
         print(f"❌ Ignition failed: {result.stderr}")
-        
+
 if __name__ == "__main__":
     ignite()
