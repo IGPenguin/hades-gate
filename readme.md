@@ -13,23 +13,24 @@ Strategy:
 Terminal alias:
 ```
 hades() {
+    # 1. Define the Master Path to your framework
+    local GATE_HOME="/Users/username/.../hades-gate"
+
     case "$1" in
         genesis)
-            # Usage: hades genesis "My new idea"
-            echo -e "\n## Seed $(date +%Y-%m-%d_%H:%M)\n$2\n---" >> .hades/styx.md
+            # This now always hits the same styx.md regardless of where you are
+            echo -e "\n## Seed $(date +%Y-%m-%d_%H:%M)\n$2\n---" >> "$GATE_HOME/.hades/styx.md"
             echo "📜 Seed carved into the Styx."
             ;;
         ignite)
-            # Usage: hades ignite
-            echo "🔥 Igniting the Spark..."
-            # Adjust 'gemini' to your specific CLI command if different
-            gemini --system "$(cat .hades/manifesto.md)" \
-            "Read .hades/styx.md and .hades/papyrus.md. Analyze the project. Write 3 Prions to .hades/prions.md."
-            echo "🦠 Prions have materialized in .hades/prions.md"
+            echo "🔥 Striking the flint..."
+            # Now we actually call spark.py and let IT handle the Gemini CLI call
+            python3 "$GATE_HOME/spark.py"
             ;;
         *)
             echo "Usage: hades [genesis 'text' | ignite]"
             ;;
     esac
 }
+
 ```
