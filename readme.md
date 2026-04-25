@@ -2,20 +2,14 @@
   <img src="assets/header.svg" width="100%" alt="Hades Gate Header">
 </p>
 
-## Hades Gate: The Primordial AI Forge
+## 🏛️ Hades Gate: Materialize ideas into reality
 
-**Objective:** Materialize ideas into reality (Code) through a structured, multi-model feedback loop.
+Hades Gate smoothens out the "human to vibe-coding" interface by analyzing your idea proposals vs your projects and proposing three distinct implementation paths.<br>
+- **Option A:** The Fast Path (Minimum Viable Result)
+- **Option B:** The Dream Path (High Quality/Polished)
+- **Option C:** The Experimental Path (Outside the Box)
 
-Hades Gate separates the **Architect** (Gemini) from the **Builder** (Claude). Gemini analyzes your project and proposes three implementation paths. You pick one, then tell Claude to execute it in your active session — where full context already lives.
-
----
-
-### 🏛️ The Architecture of the Underworld
-
-* **The Styx (`styx.md`):** Where you carve seeds — raw intent, tasks, objectives.
-* **The Arche (`arche.md`):** Project DNA snapshot (CLAUDE.md + file tree + API surface). Built by `hades seed`.
-* **The Spark (`spark.py`):** Sends Arche + Seeds to Gemini. Three proposals materialize.
-* **The Prions (`prions.md`):** Gemini's output — three infectious paths ready to mutate your codebase.
+The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) executes the choosen plan in an active session — where full context already lives.
 
 ---
 
@@ -59,27 +53,27 @@ ln -s ~/Repositories/hades-gate/.hades .hades
 
 ---
 
-### 🕹️ Commands
+### 🕹️ Usage
 
 | Command | Action |
 | :--- | :--- |
-| `hades seed` | **Cultivate the Arche.** Scans your project and writes the DNA map to `arche.md`. |
-| `hades genesis "Intent"` | **Carve a Seed.** Appends your intent to `styx.md`. |
-| `hades ignite` | **Strike the Flint.** Sends Arche + Seeds to Gemini. Three proposals land in `prions.md`. |
-
----
-
-### 🔄 The Workflow Loop
-
-1. **Map the Universe:** `hades seed` — update the Arche after any structural changes.
-2. **Speak Intent:** `hades genesis "what you want"` — log the objective.
-3. **Consult the Fates:** `hades ignite` — Gemini returns three paths in `prions.md`.
-4. **Materialize:**
-   - **In your active Claude session:** say *"implement Option B"* — Claude reads `prions.md` with full context.
-   - **From the terminal:** `hades execute B` — bridges to Claude CLI directly.
+| `hades seed` | Scans your project and writes the DNA map to `arche.md`. |
+| `hades genesis "your idea"` | Appends your idea to `styx.md`. |
+| `hades ignite` | Sends Arche + Seeds to Gemini. Three proposals land in `prions.md`. |
+|**Claude session:** *"implement option B"*|Claude reads `prions.md` with full context and executes the plan.|
+|**(or) Terminal:** `hades execute B`|Bridges the selected `prions.md` plan execution to a clean Claude CLI session directly.|
 
 ---
 
 ### 🛡️ Safety & Privacy
 * **Ghostwire Protocol:** `.hades/` is symlinked — your seeds, API key, and generated files stay in `hades-gate`, never committed to your project.
 * **Git Integrity:** `styx.md`, `arche.md`, `prions.md`, and `erebus.env` are all gitignored.
+
+---
+
+### 🏛️ Architecture
+
+* **The Styx (`styx.md`):** Where you carve seeds — raw intent, tasks, objectives.
+* **The Arche (`arche.md`):** Project DNA snapshot (CLAUDE.md + file tree + API surface). Built by `hades seed`.
+* **The Spark (`spark.py`):** Sends Arche + Seeds to Gemini. Three proposals materialize.
+* **The Prions (`prions.md`):** Gemini's output — three infectious paths ready to mutate your codebase.

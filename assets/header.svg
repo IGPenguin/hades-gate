@@ -17,14 +17,6 @@
         letter-spacing: 15px;
         text-transform: uppercase;
       }
-      .subtitle {
-        fill: #ff4500;
-        font-family: 'Arial', sans-serif;
-        font-size: 24px;
-        letter-spacing: 8px;
-        text-transform: uppercase;
-        opacity: 0.8;
-      }
       .gate-line {
         stroke: #333;
         stroke-width: 2;
@@ -41,9 +33,6 @@
   
   <!-- Main Text -->
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="title" filter="url(#glow)">Hades Gate</text>
-  
-  <!-- Subtitle -->
-  <text x="50%" y="65%" dominant-baseline="middle" text-anchor="middle" class="subtitle">The Primordial AI Forge</text>
   
   <!-- Ember Sparks -->
   <circle cx="200" cy="300" r="2" fill="#ff4500" opacity="0.6" />
