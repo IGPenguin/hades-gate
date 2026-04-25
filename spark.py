@@ -7,13 +7,36 @@ import subprocess
 import threading
 
 # --- PATH CONFIGURATION ---
-HADES_PATH = os.path.expanduser("~/Repositories/hades-gate/.hades")
+HADES_HOME = os.path.dirname(os.path.abspath(__file__))
+HADES_PATH = os.path.join(HADES_HOME, ".hades")
 MANIFESTO = os.path.join(HADES_PATH, "manifesto.md")
 PAPYRUS = os.path.join(HADES_PATH, "papyrus.md")
 STYX = os.path.join(HADES_PATH, "styx.md")
 PRIONS = os.path.join(HADES_PATH, "prions.md")
 ARCHE = os.path.join(HADES_PATH, "arche.md")
 STYX_ARCHIVE = os.path.join(HADES_PATH, "styx_archive.md")
+EREBUS_ENV = os.path.join(HADES_PATH, "erebus.env")
+
+def load_erebus():
+    """Load GEMINI_API_KEY from erebus.env if it exists."""
+    if os.path.exists(EREBUS_ENV):
+        with open(EREBUS_ENV, "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                if line.startswith("export "):
+                    line = line.replace("export ", "")
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    os.environ[key] = value.strip("'\"")
+
+def carve_seed(intent):
+    """Appends the user's intent to styx.md."""
+    timestamp = time.strftime("%Y-%m-%d %H:%M")
+    with open(STYX, "a", encoding="utf-8") as f:
+        f.write(f"\n## Seed {timestamp}\n{intent}\n---\n")
+    print(f"📜 Seed carved into the Styx at {STYX}")
 
 def spinner():
     """A simple terminal spinner to show life in the void."""
@@ -106,8 +129,10 @@ def check_ghostwire():
         if target != os.path.realpath(HADES_PATH):
             print(f"⚠️  Warning: .hades symlink points to {target}, not {HADES_PATH}")
     elif os.path.isdir(local_hades):
+        # If we are in the hades-gate repo itself, this is expected
+        if os.path.realpath(local_hades) == os.path.realpath(HADES_PATH):
+            return
         print("⚠️  Warning: .hades is a plain directory, not a Ghostwire symlink.")
-    # No .hades at all means we're running from hades-gate itself — fine.
 
 def archive_styx(styx_content):
     """Append consumed seeds to styx_archive.md and clear styx.md."""
@@ -118,6 +143,7 @@ def archive_styx(styx_content):
     print("📦 Seeds archived. Styx cleared for the next ritual.")
 
 def ignite():
+    load_erebus()
     check_ghostwire()
     for file_path in [MANIFESTO, PAPYRUS, STYX]:
         if not os.path.exists(file_path):
@@ -169,7 +195,9 @@ Do NOT include citation markers (e.g. [cite: X], [cite_start]) anywhere in your 
         )
     finally:
         t.do_run = False
-        t.join()
+        # Only join if t was actually started and is still running
+        if t.is_alive():
+            t.join()
 
     if result.returncode == 0:
         output = result.stdout.strip()
@@ -190,7 +218,20 @@ Do NOT include citation markers (e.g. [cite: X], [cite_start]) anywhere in your 
         print(f"\n❌ Ignition failed: {result.stderr}")
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "seed":
-        cultivate_arche()
+    if len(sys.argv) > 1:
+        cmd = sys.argv[1]
+        if cmd == "seed":
+            cultivate_arche()
+        elif cmd == "genesis":
+            if len(sys.argv) > 2:
+                carve_seed(sys.argv[2])
+            else:
+                print("❌ Error: 'genesis' requires an intent message.")
+                print("Usage: hades genesis 'Your intent here'")
+        elif cmd == "ignite":
+            ignite()
+        else:
+            print(f"Unknown command: {cmd}")
+            print("Usage: hades [seed | genesis 'intent' | ignite]")
     else:
         ignite()

@@ -8,21 +8,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-All interaction happens via the `hades()` shell function defined in `~/.zshrc` (not in this repo). The function calls `spark.py` directly.
+All interaction happens via the `hades` CLI (aliased to the `hades` shell script in this repo).
 
 ```bash
-hades seed              # Cultivate the Arche — scan the active project and write .hades/arche.md
+hades seed              # Cultivate the Arche — scan the active project
 hades genesis "Intent"  # Carve a seed into .hades/styx.md
-hades ignite            # Send Arche + Styx to Gemini; writes proposals to .hades/prions.md
+hades ignite            # Strike the flint — send Arche + Styx to Gemini
 ```
 
-`spark.py` is the only Python file. Run it directly if needed:
-```bash
-python3 spark.py seed   # same as hades seed
-python3 spark.py        # same as hades ignite
-```
-
-Requires: `gemini` CLI on PATH, a valid `GEMINI_API_KEY` in `.hades/erebus.env`.
+Implementation typically happens in a live Claude session ("Implement Path B").
 
 ## Architecture
 

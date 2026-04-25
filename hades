@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Get the directory where the script is located
+GATE_HOME="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Run the python catalyst
+python3 "$GATE_HOME/spark.py" "$@"
