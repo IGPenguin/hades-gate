@@ -1,4 +1,4 @@
-<svg width="1200" height="400" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+<svg width="1200" height="200" viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
@@ -14,7 +14,7 @@
         font-family: 'Georgia', serif; 
         font-size: 120px; 
         font-weight: bold; 
-        letter-spacing: 15px;
+        letter-spacing: 15px; 
         text-transform: uppercase;
       }
       .gate-line {
@@ -29,15 +29,15 @@
   
   <!-- Decorative Greek Key / Meander Pattern (Simplified) -->
   <path d="M0 20 L40 20 L40 60 L80 60 L80 20 L120 20 L120 60 L160 60 L160 20" fill="none" stroke="#222" stroke-width="4" stroke-dasharray="1200" />
-  <path d="M0 380 L40 380 L40 340 L80 340 L80 380 L120 380 L120 340 L160 340 L160 380" fill="none" stroke="#222" stroke-width="4" />
+  <path d="M0 180 L40 180 L40 140 L80 140 L80 180 L120 180 L120 140 L160 140 L160 180" fill="none" stroke="#222" stroke-width="4" />
   
   <!-- Main Text -->
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" class="title" filter="url(#glow)">Hades Gate</text>
+  <text x="50%" y="100" dominant-baseline="central" text-anchor="middle" class="title" filter="url(#glow)">Hades Gate</text>
   
   <!-- Ember Sparks -->
-  <circle cx="200" cy="300" r="2" fill="#ff4500" opacity="0.6" />
-  <circle cx="950" cy="100" r="1.5" fill="#ff4500" opacity="0.4" />
-  <circle cx="1100" cy="250" r="2.5" fill="#ff8c00" opacity="0.5" />
-  <circle cx="100" cy="150" r="1" fill="#ff4500" opacity="0.3" />
+  <circle cx="200" cy="150" r="2" fill="#ff4500" opacity="0.6" />
+  <circle cx="950" cy="50" r="1.5" fill="#ff4500" opacity="0.4" />
+  <circle cx="1100" cy="125" r="2.5" fill="#ff8c00" opacity="0.5" />
+  <circle cx="100" cy="75" r="1" fill="#ff4500" opacity="0.3" />
   
 </svg>

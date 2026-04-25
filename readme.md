@@ -2,7 +2,7 @@
   <img src="assets/header.svg" width="100%" alt="Hades Gate Header">
 </p>
 
-## 🏛️ Hades Gate: Materialize ideas into reality
+## 🧠 Materialize your ideas into reality
 
 Hades Gate smoothens out the "human to vibe-coding" interface by analyzing your idea proposals vs your projects and proposing three distinct implementation paths.<br>
 - **Option A:** The Fast Path (Minimum Viable Result)
