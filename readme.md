@@ -21,13 +21,35 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 |**(or) Terminal:** `hades execute B`|Bridges the selected `prions.md` plan execution to a clean Claude CLI session directly.|
 
 ### 🔱 Project pillars
-*   **Zero Pollution (Ghostwire Protocol):** By using symlinks, your main repository remains "Pure." Active seeds, API keys, and transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
-*   **Peripheral Vision (Backlog Awareness):** By reading your versioned `TODOs.md`, the AI plans Path B (The Dream Path) with awareness of your future goals, ensuring immediate fixes don't block long-term vision.
-*   **Context Isolation:** The AI sees a "Snapshot" (Arche), preventing it from getting lost in the noise of your entire `.git` history or binary assets.
+*   **Zero Pollution:** By using Ghostwire Protocol, your main repository remains "Pure", the transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
+*   **Peripheral Vision:** By reading your versioned `TODOs.md`, the AI plans Path B (The Dream Path) with awareness of your future goals, ensuring immediate fixes don't block long-term vision.
+*   **Context Isolation:** The AI sees an optimized "Snapshot" of your project, preventing it from getting lost in the noise of your entire `.git` history or binary assets.
 *   **The Global Brain:** Improvements to your `manifesto.md` (coding standards) or `papyrus.md` (proposal structure) in the `hades-gate` repo immediately benefit all linked projects.
 
-### 🧬 The artifacts
-*   **The Fate (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
+### 🔗 Project linking
+
+**Ghostwire Protocol** (a symlink) bridges the **Hades Gate** framework to your project, this keeps the "Brain" and "Rules" centralized while the local project "State" is ignored by git.
+
+```text
+       [ HADES GATE ] (The Source)
+      ~/Repositories/hades-gate/
+      ├── .hades/
+      │   ├── manifesto.md (Central Rules)
+      │   └── papyrus.md   (Proposal Template)
+      └── spark.py         (The Catalyst)
+             │
+             │      [ GHOSTWIRE ]
+             └──── (Symlink link) ────┐
+                                      ▼
+                           [ YOUR PROJECT ] (The Target)
+                           ~/Repositories/your-project/
+                           ├── .hades/ <─── (Shared State)
+                           ├── TODOs.md    (Versioned Roadmap)
+                           └── src/        (Your Codebase)
+```
+
+### 🧬 Important files
+*   **The Backlog (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
 *   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
 *   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface). Built by `hades survey`.
 *   **The Prions (`prions.md`):** Gemini's output — three infectious paths ready to mutate your codebase.
@@ -38,7 +60,7 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 ## ⚙️ Setup & Installation
 
 <details>
-<summary><b>Click to expand installation steps</b></summary>
+<summary><b>Click to expand the installation steps...</b></summary>
 
 ### 1. Clone & Install
 ```bash
