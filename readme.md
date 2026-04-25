@@ -58,8 +58,8 @@ ln -s ~/Repositories/hades-gate/.hades .hades
 | Command | Action |
 | :--- | :--- |
 | `hades seed` | Scans your project and writes the DNA map to `arche.md`. |
-| `hades genesis "your idea"` | Appends your idea to `styx.md`. |
-| `hades ignite` | Sends Arche + Seeds to Gemini. Three proposals land in `prions.md`. |
+| `hades genesis "your idea"` | Appends your idea to `styx.md`, you can also edit it directly. |
+| `hades ignite` | Sends `arche.md` (project context) + `styx.md` (your idea) to Gemini. Three proposals land in `prions.md`. |
 |**Claude session:** *"implement option B"*|Claude reads `prions.md` with full context and executes the plan.|
 |**(or) Terminal:** `hades execute B`|Bridges the selected `prions.md` plan execution to a clean Claude CLI session directly.|
 
