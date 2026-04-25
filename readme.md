@@ -14,7 +14,7 @@ Terminal alias:
 ```
 hades() {
     # 1. Define the Master Path to your framework
-    local GATE_HOME="/Users/username/.../hades-gate"
+    local GATE_HOME="$HOME/.../hades-gate"
 
     case "$1" in
         genesis)
