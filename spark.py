@@ -13,6 +13,7 @@ PAPYRUS = os.path.join(HADES_PATH, "papyrus.md")
 STYX = os.path.join(HADES_PATH, "styx.md")
 PRIONS = os.path.join(HADES_PATH, "prions.md")
 ARCHE = os.path.join(HADES_PATH, "arche.md")
+STYX_ARCHIVE = os.path.join(HADES_PATH, "styx_archive.md")
 
 def spinner():
     """A simple terminal spinner to show life in the void."""
@@ -108,6 +109,14 @@ def check_ghostwire():
         print("⚠️  Warning: .hades is a plain directory, not a Ghostwire symlink.")
     # No .hades at all means we're running from hades-gate itself — fine.
 
+def archive_styx(styx_content):
+    """Append consumed seeds to styx_archive.md and clear styx.md."""
+    with open(STYX_ARCHIVE, 'a', encoding='utf-8') as f:
+        f.write(f"\n\n## === Ignited {time.strftime('%Y-%m-%d %H:%M')} ===\n")
+        f.write(styx_content.strip())
+    open(STYX, 'w').close()
+    print("📦 Seeds archived. Styx cleared for the next ritual.")
+
 def ignite():
     check_ghostwire()
     for file_path in [MANIFESTO, PAPYRUS, STYX]:
@@ -119,10 +128,19 @@ def ignite():
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
     with open(STYX, 'r') as f: styx = f.read()
 
+    if not styx.strip():
+        print("⚠️  Styx is empty — carve a seed first with: hades genesis 'your intent'")
+        return
+
     arche_context = ""
     if os.path.exists(ARCHE):
+        age_hours = (time.time() - os.path.getmtime(ARCHE)) / 3600
+        if age_hours > 24:
+            print(f"⚠️  Arche is {int(age_hours / 24)}d old — consider running 'hades seed' first.")
         with open(ARCHE, 'r') as f:
             arche_context = f"\n--- THE ARCHE (PROJECT DNA) ---\n{f.read()}\n"
+    else:
+        print("⚠️  No Arche found — Gemini will have no project context. Run 'hades seed' first.")
 
     combined_prompt = f"""
 {manifesto}
@@ -167,6 +185,7 @@ Do NOT include citation markers (e.g. [cite: X], [cite_start]) anywhere in your 
         print(output)
         print("="*40)
         print(f"\n✨ Proposals saved to {PRIONS}")
+        archive_styx(styx)
     else:
         print(f"\n❌ Ignition failed: {result.stderr}")
 
