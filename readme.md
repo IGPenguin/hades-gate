@@ -14,7 +14,7 @@ Terminal alias:
 ```
 hades() {
     local GATE_HOME="$HOME/Repositories/hades-gate"
-    if [ -f "$GATE_HOME/.hades/bedrock.env" ]; then source "$GATE_HOME/.hades/bedrock.env"; fi
+    if [ -f "$GATE_HOME/.hades/erebus.env" ]; then source "$GATE_HOME/.hades/erebus.env"; fi
 
     case "$1" in
         genesis)
