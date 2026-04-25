@@ -18,6 +18,7 @@
    - **Personal notes:** Access only via whitelisted seeds in styx.md.
    - **Risk Detection:** If a task borders on these, halt and ask for consent.
 - **State Preservation:** Before major refactors, the AI must suggest a `git tag` or snapshot.
+- **Backlog Awareness:** When proposing Path B or C, cross-reference the `TODOs.md` (if present in the Arche). Favor implementations that resolve the current seed while simplifying or modularizing pending tasks in the backlog.
 - **Anti-Hallucination:** If logic is fuzzy, halt and ask for "Intent Clarification."
 
 ## Execution

@@ -45,8 +45,9 @@ When generating proposals in `prions.md` (via `hades ignite`), you must ALWAYS p
 
 - `./install.sh`: Interactive setup script for new users.
 - `./hades`: Unified shell entry point for all commands.
-- `python3 spark.py seed`: Updates `arche.md` by scanning the project.
-- `python3 spark.py genesis "intent"`: Appends intent to `styx.md`.
+- `python3 spark.py survey`: Updates `arche.md` by scanning the project.
+- `python3 spark.py seed "intent"`: Appends intent to `styx.md`.
+- `python3 spark.py summon "query"`: Pulls tasks from the project backlog.
 - `python3 spark.py ignite`: Runs the `ignite` process.
 
 ## Workflow for Framework Maintenance

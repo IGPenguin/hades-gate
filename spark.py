@@ -78,12 +78,21 @@ def cultivate_arche():
     with open(ARCHE, "w", encoding="utf-8") as arche:
         arche.write(f"# THE ARCHE: PROJECT DNA\nInscribed: {time.ctime()}\n\n")
 
-        # 1. Core Identity (The FULL CLAUDE.md)
+        # 1. Core Identity (The FULL CLAUDE.md and TODOs.md)
         claude_path = os.path.join(PROJECT_ROOT, "CLAUDE.md")
+        todo_paths = [os.path.join(PROJECT_ROOT, "TODOs.md"), os.path.join(PROJECT_ROOT, "TODO.md")]
+        
         if os.path.exists(claude_path):
             arche.write("## Project Identity & Rules\n")
             with open(claude_path, "r", encoding="utf-8") as f:
                 arche.write(f.read().strip() + "\n\n")
+        
+        for tp in todo_paths:
+            if os.path.exists(tp):
+                filename = os.path.basename(tp)
+                arche.write(f"## Project Backlog ({filename})\n")
+                with open(tp, "r", encoding="utf-8") as f:
+                    arche.write(f.read().strip() + "\n\n")
 
         # 2. The Labyrinth (Strictly filtered directory map)
         arche.write("## The Labyrinth\n```text\n")
@@ -217,21 +226,57 @@ Do NOT include citation markers (e.g. [cite: X], [cite_start]) anywhere in your 
     else:
         print(f"\n❌ Ignition failed: {result.stderr}")
 
+def summon_task(query):
+    """Searches for a task in TODOs.md and carves it as a seed."""
+    PROJECT_ROOT = os.getcwd()
+    todo_paths = [os.path.join(PROJECT_ROOT, "TODOs.md"), os.path.join(PROJECT_ROOT, "TODO.md")]
+    found_lines = []
+    
+    for tp in todo_paths:
+        if os.path.exists(tp):
+            with open(tp, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+                for i, line in enumerate(lines):
+                    if query.lower() in line.lower():
+                        # Try to capture context (like sub-bullets if it's a list)
+                        task_block = line.strip()
+                        # Simple logic: grab next lines if they are indented
+                        for j in range(i + 1, min(i + 5, len(lines))):
+                            if lines[j].startswith("  ") or lines[j].startswith("\t"):
+                                task_block += "\n" + lines[j].strip()
+                            else:
+                                break
+                        found_lines.append(task_block)
+    
+    if not found_lines:
+        print(f"❌ No tasks matching '{query}' found in TODOs.md")
+        return
+
+    combined_seeds = "\n\n".join(found_lines)
+    carve_seed(f"Summoned from Backlog:\n{combined_seeds}")
+    print(f"🪄 {len(found_lines)} task(s) summoned to the Styx.")
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         cmd = sys.argv[1]
-        if cmd == "seed":
+        if cmd == "survey":
             cultivate_arche()
-        elif cmd == "genesis":
+        elif cmd == "seed":
             if len(sys.argv) > 2:
                 carve_seed(sys.argv[2])
             else:
-                print("❌ Error: 'genesis' requires an intent message.")
-                print("Usage: hades genesis 'Your intent here'")
+                print("❌ Error: 'seed' requires an intent message.")
+                print("Usage: hades seed 'Your intent here'")
+        elif cmd == "summon":
+            if len(sys.argv) > 2:
+                summon_task(sys.argv[2])
+            else:
+                print("❌ Error: 'summon' requires a search query.")
+                print("Usage: hades summon 'query'")
         elif cmd == "ignite":
             ignite()
         else:
             print(f"Unknown command: {cmd}")
-            print("Usage: hades [seed | genesis 'intent' | ignite]")
+            print("Usage: hades [survey | seed 'intent' | summon 'query' | ignite]")
     else:
         ignite()
