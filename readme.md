@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/header.svg" width="100%" alt="Hades Gate Header">
+</p>
+
 ## Hades Gate: The Primordial AI Forge
 
 **Objective:** Materialize ideas into reality (Code) through a structured, multi-model feedback loop.
