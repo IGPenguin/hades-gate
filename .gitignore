@@ -1,5 +1,6 @@
 .hades/styx.md
 .hades/prions.md
 .hades/erebus.env
+.hades/arche.env
 __pycache__/
 *.session
