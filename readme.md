@@ -13,18 +13,20 @@ Strategy:
 Terminal alias:
 ```
 hades() {
-    # 1. Define the Master Path to your framework
-    local GATE_HOME="$HOME/.../hades-gate"
+    local GATE_HOME="$HOME/Repositories/hades-gate"
+    
+    # Load the API Key if the file exists
+    if [ -f "$GATE_HOME/.hades/erebus.env" ]; then
+        source "$GATE_HOME/.hades/erebus.env"
+    fi
 
     case "$1" in
         genesis)
-            # This now always hits the same styx.md regardless of where you are
             echo -e "\n## Seed $(date +%Y-%m-%d_%H:%M)\n$2\n---" >> "$GATE_HOME/.hades/styx.md"
             echo "📜 Seed carved into the Styx."
             ;;
         ignite)
             echo "🔥 Striking the flint..."
-            # Now we actually call spark.py and let IT handle the Gemini CLI call
             python3 "$GATE_HOME/spark.py"
             ;;
         *)
@@ -32,5 +34,4 @@ hades() {
             ;;
     esac
 }
-
 ```
