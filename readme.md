@@ -55,6 +55,41 @@ export GEMINI_API_KEY="your_google_ai_studio_key"
 #### 4. The Terminal Alias
 Add the `hades()` function to your `~/.zshrc` or `~/.bashrc` to control the Gate from anywhere.
 
+```
+hades() {
+    local GATE_HOME="$HOME/Repositories/hades-gate"
+    if [ -f "$GATE_HOME/.hades/erebus.env" ]; then source "$GATE_HOME/.hades/erebus.env"; fi
+
+    case "$1" in
+        genesis)
+            echo -e "\n## Seed $(date +%Y-%m-%d_%H:%M)\n$2\n---" >> "$GATE_HOME/.hades/styx.md"
+            echo "📜 Seed carved into the Styx."
+            ;;
+        ignite)
+            echo "🔥 Striking the flint..."
+            python3 "$GATE_HOME/spark.py"
+            ;;
+        execute)
+            # Usage: hades execute B
+            if [ -z "$2" ]; then
+                echo "❌ Please specify Path A, B, or C."
+            else
+                echo "🛠️ Summoning Claude to implement Path $2..."
+                # This launches the Claude CLI with the specific instruction
+                claude "Analyze .hades/prions.md and implement the full logic for Option $2. Follow all rules in .hades/manifesto.md."
+            fi
+            ;;
+	seed)
+            # Python now handles the complexity
+            python3 "$GATE_HOME/spark.py" seed
+            ;;
+        *)
+            echo "Usage: hades [genesis 'idea' | ignite | execute A/B/C]"
+            ;;
+    esac
+}
+```
+
 ---
 
 ### 🕹️ Command Usage
