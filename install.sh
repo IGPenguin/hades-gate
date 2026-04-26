@@ -59,6 +59,6 @@ echo "  (Or use a plain alias if you don't need 'execute': alias hades='$GATE_HO
 # 4. Finalize
 echo -e "\n✨ Hades Gate setup complete."
 echo "Usage:"
-echo "  hades seed              # Cultivate the Arche"
-echo "  hades genesis \"intent\"  # Carve a seed"
+echo "  hades survey            # Cultivate the Arche"
+echo "  hades seed \"intent\"     # Carve a seed"
 echo "  hades ignite            # Strike the flint"

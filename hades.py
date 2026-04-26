@@ -154,28 +154,35 @@ def archive_styx(styx_content):
 def ignite():
     load_erebus()
     check_ghostwire()
-    for file_path in [MANIFESTO, PAPYRUS, STYX]:
+    
+    # Essential framework files
+    for file_path in [MANIFESTO, PAPYRUS]:
         if not os.path.exists(file_path):
             print(f"❌ Error: {file_path} not found.")
             return
 
     with open(MANIFESTO, 'r') as f: manifesto = f.read()
     with open(PAPYRUS, 'r') as f: papyrus = f.read()
-    with open(STYX, 'r') as f: styx = f.read()
+    
+    # Transient seed file
+    styx = ""
+    if os.path.exists(STYX):
+        with open(STYX, 'r') as f: 
+            styx = f.read()
 
     if not styx.strip():
-        print("⚠️  Styx is empty — carve a seed first with: hades genesis 'your intent'")
+        print("⚠️  Styx is empty — carve a seed first with: hades seed 'your intent'")
         return
 
     arche_context = ""
     if os.path.exists(ARCHE):
         age_hours = (time.time() - os.path.getmtime(ARCHE)) / 3600
         if age_hours > 24:
-            print(f"⚠️  Arche is {int(age_hours / 24)}d old — consider running 'hades seed' first.")
+            print(f"⚠️  Arche is {int(age_hours / 24)}d old — consider running 'hades survey' first.")
         with open(ARCHE, 'r') as f:
             arche_context = f"\n--- THE ARCHE (PROJECT DNA) ---\n{f.read()}\n"
     else:
-        print("⚠️  No Arche found — Gemini will have no project context. Run 'hades seed' first.")
+        print("⚠️  No Arche found — Gemini will have no project context. Run 'hades survey' first.")
 
     combined_prompt = f"""
 {manifesto}
