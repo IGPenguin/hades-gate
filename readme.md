@@ -14,8 +14,8 @@
 
 ### 🔪 Execution
 **Claude session:** *`read .hades/prions.md to implement combination of options A and E + feature X from option B`*<br>
-- Implement the selected proposal, or a combination of multiple options, or simply cherry-pick features as you like.<br>
-- <i>**Pro-tip:** Ask Claude to fill any blind spots it discovers when planning the excution by asking you questions.</i><br>
+- **Choose your path:** Implement a selected proposal, combine multiple options or cherry-pick features as you like.<br>
+- <i>**Pro-tip:** Ask Claude to fill any blind spots it discovers when planning the execution by asking you questions.</i><br>
 
 ### 📌 Commands
 | Command | Action |
