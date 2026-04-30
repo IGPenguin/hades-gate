@@ -4,7 +4,7 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface that analyzes your idea within your project context and proposes six distinct implementation paths:<br>
+**Hades Gate** is a **High-Velocity Vibe-Coding** interface. Once initialized, the **Architect** (Gemini) analyzes your idea within your project context and proposes six distinct implementation paths for the **Builder** (Claude) to execute cleanly, in combination or with extra refining:<br>
 - **Option A:** The Fast Path (Minimum Viable Result)
 - **Option B:** The Interconnecting Path (Existing Opportunities)
 - **Option C:** The Dream Path (High Quality/Polished)
@@ -12,8 +12,12 @@
 - **Option E:** The Experimental Path (Outside the Box)
 - **Option F:** The Frankenstein Path (Flashy Outside/Pragmatic Inside)
 
-The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) executes the chosen plan in an active session — where full context already lives.
+### 🔪 Execution
+**Claude session:** *`implement a combination of options A and E + feature X from option B`*<br>
+- Reads `prions.md` and executes the plan. Select specific option, combination of options, or cherry-pick features as you like.<br>
+- <i>**Pro-tip:** Ask Claude to fill blind spots by asking you questions when planning the excution within the project context.</i><br>
 
+### 📌 Commands
 | Command | Action |
 | :--- | :--- |
 | `hades status` | Checks the pulse of the Gate (drift detection, seed count). |
@@ -22,7 +26,6 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 | `hades seed "idea"` | Plants your idea into `styx.md`. |
 | `hades summon "query"` | Searches your `TODOs.md` for a task and "summons" it as a seed. |
 | `hades ignite` | The ritual: Auto-surveys (if drifted) + generates Prions into `prions.md`. |
-|**Claude session:** *"implement option B"*|Claude reads `prions.md` with full context and executes the plan.|
 
 ### 🔱 Project pillars
 *   **Zero Pollution:** By using Ghostwire Protocol, your main repository remains "Pure", the transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
@@ -58,8 +61,6 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 *   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface). Built by `hades survey`.
 *   **The Prions (`prions.md`):** Gemini's output — six infectious paths ready to mutate your codebase.
 *   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
-
----
 
 ## ⚙️ Setup & Installation
 
