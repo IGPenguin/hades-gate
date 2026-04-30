@@ -13,9 +13,9 @@
 - **Option F:** The Frankenstein Path (Flashy Outside/Pragmatic Inside)
 
 ### 🔪 Execution
-**Claude session:** *`implement a combination of options A and E + feature X from option B`*<br>
-- Reads `prions.md` and executes the plan. Select specific option, combination of options, or cherry-pick features as you like.<br>
-- <i>**Pro-tip:** Ask Claude to fill blind spots by asking you questions when planning the excution within the project context.</i><br>
+**Claude session:** *`read .hades/prions.md to implement combination of options A and E + feature X from option B`*<br>
+- Implement the selected proposal, or a combination of multiple options, or simply cherry-pick features as you like.<br>
+- <i>**Pro-tip:** Ask Claude to fill any blind spots it discovers when planning the excution by asking you questions.</i><br>
 
 ### 📌 Commands
 | Command | Action |
