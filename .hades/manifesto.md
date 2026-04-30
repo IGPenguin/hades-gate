@@ -22,7 +22,10 @@
 - **Anti-Hallucination:** If logic is fuzzy, halt and ask for "Intent Clarification."
 
 ## Execution
-When "Igniting" seeds from styx.md, always produce 3 Prions:
-1. **The Quick Path:** Minimal friction, immediate result.
-2. **The Deep Path:** The "Dream" version; clean, refactored, architectural.
-3. **The Wild Path:** Experimental or highly efficient "out of the box" logic.
+When "Igniting" seeds from styx.md, always produce 6 Prions:
+1. **Option A — The Fast Path:** Minimal friction, immediate result.
+2. **Option B — The Interconnecting Path:** Leveraging existing opportunities for unforeseen efficiency.
+3. **Option C — The Dream Path:** High quality, polished, clean architecture.
+4. **Option D — The Inspired Path:** A common or proven existing solution.
+5. **Option E — The Experimental Path:** Outside-the-box, novel, or highly efficient logic.
+6. **Option F — The Frankenstein Path:** Flashy results with a pragmatic (potentially messy) interior.

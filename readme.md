@@ -4,21 +4,25 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface that analyzes your idea within your project context and proposes three distinct implementation paths:<br>
+**Hades Gate** is a **High-Velocity Vibe-Coding** interface that analyzes your idea within your project context and proposes six distinct implementation paths:<br>
 - **Option A:** The Fast Path (Minimum Viable Result)
-- **Option B:** The Dream Path (High Quality/Polished)
-- **Option C:** The Experimental Path (Outside the Box)
+- **Option B:** The Interconnecting Path (Existing Opportunities)
+- **Option C:** The Dream Path (High Quality/Polished)
+- **Option D:** The Inspired Path (Common Solution)
+- **Option E:** The Experimental Path (Outside the Box)
+- **Option F:** The Frankenstein Path (Flashy Outside/Pragmatic Inside)
 
 The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) executes the chosen plan in an active session — where full context already lives.
 
 | Command | Action |
 | :--- | :--- |
-| `hades survey` | Scans your project (including `TODOs.md`) and writes the DNA map to `arche.md`. |
+| `hades status` | Checks the pulse of the Gate (drift detection, seed count). |
+| `hades link` | Automatically symlinks your project into the Gate (Ghostwire Protocol). |
+| `hades survey` | Scans your project and writes the DNA map to `arche.md`. |
 | `hades seed "idea"` | Plants your idea into `styx.md`. |
-| `hades summon "query"` | Searches your `TODOs.md` for a task and "summons" it as a seed in `styx.md`. |
-| `hades ignite` | Sends `arche.md` (context) + `styx.md` (seed) to Gemini. Proposals land in `prions.md`. |
+| `hades summon "query"` | Searches your `TODOs.md` for a task and "summons" it as a seed. |
+| `hades ignite` | The ritual: Auto-surveys (if drifted) + generates Prions into `prions.md`. |
 |**Claude session:** *"implement option B"*|Claude reads `prions.md` with full context and executes the plan.|
-|**(or) Terminal:** `hades execute B`|Bridges the selected `prions.md` plan execution to a clean Claude CLI session directly.|
 
 ### 🔱 Project pillars
 *   **Zero Pollution:** By using Ghostwire Protocol, your main repository remains "Pure", the transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
@@ -52,7 +56,7 @@ The **Architect** (Gemini) analyzes your project, the **Builder** (Claude) execu
 *   **The Backlog (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
 *   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
 *   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface). Built by `hades survey`.
-*   **The Prions (`prions.md`):** Gemini's output — three infectious paths ready to mutate your codebase.
+*   **The Prions (`prions.md`):** Gemini's output — six infectious paths ready to mutate your codebase.
 *   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
 
 ---
@@ -68,31 +72,18 @@ git clone https://github.com/your-repo/hades-gate.git ~/Repositories/hades-gate
 cd ~/Repositories/hades-gate
 ./install.sh
 ```
-Follow the prompts to set up your `GEMINI_API_KEY`.
 
-### 2. Shell Function
-Add the following function to your `~/.zshrc` or `~/.bashrc`. It wraps the `hades` script and adds the optional `execute` command:
-```zsh
-hades() {
-    local GATE_BIN="$HOME/Repositories/hades-gate/hades"
-
-    if [[ "$1" == "execute" ]]; then
-        if [ -z "$2" ]; then
-            echo "❌ Please specify Path A, B, or C."
-        else
-            echo "🛠️ Summoning Claude to implement Path $2..."
-            claude "Analyze .hades/prions.md and implement the full logic for Option $2. Follow all rules in .hades/manifesto.md."
-        fi
-    else
-        "$GATE_BIN" "$@"
-    fi
-}
+### 2. Global Alias
+Add this to your `~/.zshrc` or `~/.bashrc`:
+```bash
+alias hades='python3 ~/Repositories/hades-gate/hades.py'
 ```
 
-### 3. The Ghostwire (Symlink)
-Link your project into the Gate so it shares the `.hades/` state:
+### 3. The Ghostwire Ritual
+Link any project into the Gate to start the cycle:
 ```bash
 cd ~/Repositories/your-project
-ln -s ~/Repositories/hades-gate/.hades .hades
+hades link
+hades status
 ```
 </details>

@@ -1,64 +1,48 @@
 #!/bin/bash
 
-# Hades Gate Installation Script
-echo "🏛️  Welcome to the Hades Gate Setup"
+# --- COLORS ---
+HEADER='\033[95m'
+OKGREEN='\033[92m'
+FAIL='\033[91m'
+ENDC='\033[0m'
+BOLD='\033[1m'
 
-GATE_HOME=$(pwd)
-HADES_DIR="$GATE_HOME/.hades"
-EREBUS_ENV="$HADES_DIR/erebus.env"
+echo -e "${HEADER}🔱 HADES GATE: Installation Ritual${ENDC}"
 
-# 1. Dependency Checks
-echo "🔍 Checking dependencies..."
+# 1. Check Python
 if ! command -v python3 &> /dev/null; then
-    echo "❌ python3 is not installed. Please install it first."
+    echo -e "${FAIL}❌ python3 is not installed. Please install it first.${ENDC}"
     exit 1
 fi
 
+# 2. Check Gemini CLI
 if ! command -v gemini &> /dev/null; then
-    echo "⚠️  Gemini CLI not found on PATH. Ensure it's installed for 'ignite' to work."
+    echo -e "${FAIL}❌ 'gemini' CLI is not found in PATH.${ENDC}"
+    echo "Please ensure the Gemini CLI is installed and accessible."
+    exit 1
 fi
 
-# 2. Setup erebus.env
-if [ ! -f "$EREBUS_ENV" ]; then
-    echo "🔑 API Key Setup"
-    echo "To use 'ignite', you need a Gemini API Key from https://aistudio.google.com/app/apikey"
-    read -p "Enter your GEMINI_API_KEY (leave empty to skip): " api_key
-    if [ ! -z "$api_key" ]; then
-        echo "export GEMINI_API_KEY=\"$api_key\"" > "$EREBUS_ENV"
-        chmod 600 "$EREBUS_ENV"
-        echo "✅ API Key saved to .hades/erebus.env"
-    else
-        echo "⏭️  Skipping API Key setup. You can add it later to .hades/erebus.env"
-        touch "$EREBUS_ENV"
-    fi
+# 3. Setup Environment
+HADES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+ENV_FILE="$HADES_DIR/.hades/erebus.env"
+
+if [ ! -f "$ENV_FILE" ]; then
+    echo "🔑 Setting up your Gemini API Key..."
+    read -p "Enter your GEMINI_API_KEY: " API_KEY
+    echo "GEMINI_API_KEY=$API_KEY" > "$ENV_FILE"
+    chmod 600 "$ENV_FILE"
+    echo -e "${OKGREEN}✨ API Key secured in .hades/erebus.env${ENDC}"
 else
     echo "✅ .hades/erebus.env already exists."
 fi
 
-# 3. Setup Shell Integration
-echo ""
-echo "🐚 Shell Integration"
-echo "Add the following function to your ~/.zshrc (includes 'hades execute' → Claude bridge):"
-echo ""
-echo "hades() {"
-echo "    local GATE_BIN=\"$GATE_HOME/hades\""
-echo "    if [[ \"\$1\" == \"execute\" ]]; then"
-echo "        if [ -z \"\$2\" ]; then"
-echo "            echo \"❌ Please specify Path A, B, or C.\""
-echo "        else"
-echo "            echo \"🛠️ Summoning Claude to implement Path \$2...\""
-echo "            claude \"Analyze .hades/prions.md and implement the full logic for Option \$2. Follow all rules in .hades/manifesto.md.\""
-echo "        fi"
-echo "    else"
-echo "        \"\$GATE_BIN\" \"\$@\""
-echo "    fi"
-echo "}"
-echo ""
-echo "  (Or use a plain alias if you don't need 'execute': alias hades='$GATE_HOME/hades')"
-
-# 4. Finalize
-echo -e "\n✨ Hades Gate setup complete."
-echo "Usage:"
-echo "  hades survey            # Cultivate the Arche"
-echo "  hades seed \"intent\"     # Carve a seed"
-echo "  hades ignite            # Strike the flint"
+# 4. Final Instructions
+echo -e "\n${BOLD}Setup Complete!${ENDC}"
+echo -e "To use the 'hades' command from anywhere, add this to your .zshrc or .bashrc:"
+echo -e "${BOLD}alias hades='python3 $HADES_DIR/hades.py'${ENDC}"
+echo -e "\n${BOLD}Quick Start:${ENDC}"
+echo "1. cd your-project"
+echo "2. hades link"
+echo "3. hades survey"
+echo "4. hades seed 'My idea'"
+echo "5. hades ignite"
