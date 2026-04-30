@@ -58,7 +58,7 @@
 ### 🧬 Important files
 *   **The Backlog (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
 *   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
-*   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface). Built by `hades survey`.
+*   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface).
 *   **The Prions (`prions.md`):** Gemini's output — six infectious paths ready to mutate your codebase.
 *   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
 
