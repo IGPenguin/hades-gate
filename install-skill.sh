@@ -29,12 +29,15 @@ PLUGINJSON
 cp "$REPO_DIR/.hades/papyrus.md" "$HADES_CONFIG/papyrus.md"
 cp "$REPO_DIR/.hades/manifesto.md" "$HADES_CONFIG/manifesto.md"
 
-python3 - "$PLUGIN_CACHE" "$PLUGINS_JSON" << 'EOF'
+SETTINGS_JSON="$HOME/.claude/settings.json"
+
+python3 - "$PLUGIN_CACHE" "$PLUGINS_JSON" "$SETTINGS_JSON" << 'EOF'
 import json, os, sys
 from datetime import datetime, timezone
 
 install_path = sys.argv[1]
 plugins_json = sys.argv[2]
+settings_json = sys.argv[3]
 
 with open(plugins_json) as f:
     data = json.load(f)
@@ -50,6 +53,14 @@ data['plugins']['hades@local'] = [{
 
 with open(plugins_json, 'w') as f:
     json.dump(data, f, indent=2)
+
+with open(settings_json) as f:
+    settings = json.load(f)
+
+settings.setdefault('enabledPlugins', {})['hades@local'] = True
+
+with open(settings_json, 'w') as f:
+    json.dump(settings, f, indent=2)
 EOF
 
 echo "✨ Done. Restart Claude Code, then type /hades in any project."
