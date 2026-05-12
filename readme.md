@@ -4,16 +4,17 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface. Once initialized, the **Architect** (Gemini) analyzes your idea within your project context and proposes six distinct implementation paths for the **Builder** (Claude) to execute cleanly, in combination or with extra refining:<br>
-- **Option A:** The Fast Path (Minimum Viable Result)
-- **Option B:** The Interconnecting Path (Existing Opportunities)
-- **Option C:** The Dream Path (High Quality/Polished)
-- **Option D:** The Inspired Path (Common Solution)
-- **Option E:** The Experimental Path (Outside the Box)
-- **Option F:** The Frankenstein Path (Flashy Outside/Pragmatic Inside)
+**Hades Gate** is a **High-Velocity Vibe-Coding** interface. Once initialized, the **Architect** (Gemini) analyzes your idea within your project context and proposes six core implementation paths (The Hexalogy), culminating in a final "Peak of Evolution" (The Zenith) for the **Builder** (Claude) to execute cleanly:<br>
+- **Option A:** The Spark (Fastest path)
+- **Option B:** The Weave (Systems integration)
+- **Option C:** The Apex (High polish)
+- **Option D:** The Echo (Standard patterns)
+- **Option E:** The Rift (Experimental)
+- **Option F:** The Chimera (Flashy hacks)
+- **The Synthesis:** (Refined convergence)
 
 ### 🔪 Execution
-**Claude session:** *`read .hades/prions.md to implement combination of options A and E + feature X from option B`*<br>
+**Claude session:** *`read .hades/prions.md to implement The Zenith (The Synthesis)`*<br>
 - **Choose path:** Implement a selected proposal, combine multiple options or cherry-pick features as you like.<br>
 - <i>**Pro-tip:** Ask Claude to fill any blind spots it discovers when planning the execution by asking you questions.</i><br>
 
@@ -29,7 +30,7 @@
 
 ### 🔱 Project pillars
 *   **Zero Pollution:** By using Ghostwire Protocol, your main repository remains "Pure", the transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
-*   **Peripheral Vision:** By reading your versioned `TODOs.md`, the AI plans Path B (The Dream Path) with awareness of your future goals, ensuring immediate fixes don't block long-term vision.
+*   **Peripheral Vision:** By reading your versioned `TODOs.md`, the AI plans Path C (The Apex) with awareness of your future goals, ensuring immediate fixes don't block long-term vision.
 *   **Context Isolation:** The AI sees an optimized "Snapshot" of your project, preventing it from getting lost in the noise of your entire `.git` history or binary assets.
 *   **The Global Brain:** Improvements to your `manifesto.md` (coding standards) or `papyrus.md` (proposal structure) in the `hades-gate` repo immediately benefit all linked projects.
 
@@ -59,7 +60,7 @@
 *   **The Backlog (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
 *   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
 *   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface).
-*   **The Prions (`prions.md`):** Gemini's output — six infectious paths ready to mutate your codebase.
+*   **The Prions (`prions.md`):** Gemini's output — the Hexalogy + the Synthesis.
 *   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
 
 ## ⚙️ Setup & Installation

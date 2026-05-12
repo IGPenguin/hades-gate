@@ -25,14 +25,15 @@ Projects use `hades link` to symlink their `.hades/` directory to this repositor
 
 ## Core Mandates
 
-### 1. The Hexalogy of Prions
-When generating proposals in `prions.md` (via `hades ignite`), you must ALWAYS provide exactly six paths:
-- **Option A — The Fast Path:** Minimal friction, immediate result.
-- **Option B — The Interconnecting Path:** Leveraging existing opportunities.
-- **Option C — The Dream Path:** High quality, polished, clean architecture.
-- **Option D — The Inspired Path:** A common or proven existing solution.
-- **Option E — The Experimental Path:** Outside-the-box, novel, or highly efficient.
-- **Option F — The Frankenstein Path:** Flashy results with a pragmatic interior.
+### 1. The Hexalogy & The Zenith
+When generating proposals in `prions.md` (via `hades ignite`), you must ALWAYS provide the six core paths of the Hexalogy, followed by the Zenith:
+- **Option A — The Spark (Fastest path):** Minimal friction, immediate result.
+- **Option B — The Weave (Uses existing code):** Leveraging existing opportunities.
+- **Option C — The Sovereign Path (High polish):** High quality, polished, clean architecture.
+- **Option D — The Echo (Standard patterns):** A common or proven existing solution.
+- **Option E — The Rift (Experimental):** Outside-the-box, novel, or highly efficient.
+- **Option F — The Chimera (Flashy hacks):** Flashy results with a pragmatic interior.
+- **The Zenith — The Synthesis (The Peak of Evolution):** A curated selection of elements from the above.
 
 ### 2. State Awareness
 - **Arche is Ground Truth:** `arche.md` contains the project identity, file tree, and API signatures.

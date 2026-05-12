@@ -26,10 +26,10 @@ hades ignite              # Strike the flint — auto-surveys if drift detected
 | File | Role | Git-tracked? |
 |------|------|-------------|
 | `manifesto.md` | Global coding standards for the Architect | Yes |
-| `papyrus.md` | The 6-path proposal template | Yes |
+| `papyrus.md` | The 7-path proposal template | Yes |
 | `styx.md` | Active seeds (raw intent) | **No** |
 | `arche.md` | Project DNA (Survey output) | **No** |
-| `prions.md` | 6-path proposals (Ignition output) | **No** |
+| `prions.md` | 7-path proposals (Ignition output) | **No** |
 | `erebus.env` | API keys (`GEMINI_API_KEY`) | **No** |
 
 ### The Ghostwire Protocol
@@ -44,13 +44,14 @@ Projects use `hades link` to automatically symlink their `.hades/` directory to 
 
 ### The Proposal Format (Papyrus)
 
-Every `ignite` run produces exactly 6 paths in `prions.md`:
-- **Option A — The Fast Path:** minimal friction, immediate result
-- **Option B — The Interconnecting Path:** leveraging existing opportunities
-- **Option C — The Dream Path:** high quality, polished, clean architecture
-- **Option D — The Inspired Path:** common or proven existing solution
-- **Option E — The Experimental Path:** outside-the-box or novel approach
-- **Option F — The Frankenstein Path:** flashy results with a pragmatic interior
+Every `ignite` run produces 6 core paths (The Hexalogy) and one ultimate synthesis (The Zenith) in `prions.md`:
+- **Option A — The Spark (Fastest path):** minimal friction, immediate result
+- **Option B — The Weave (Systems integration):** leveraging existing opportunities
+- **Option C — The Apex (High quality):** high quality, polished, clean architecture
+- **Option D — The Echo (Standard patterns):** common or proven existing solution
+- **Option E — The Rift (Experimental):** outside-the-box or novel approach
+- **Option F — The Chimera (Flashy hacks):** flashy results with a pragmatic interior
+- **The Synthesis (Refined convergence):** a curated selection from the above
 
 The Evaluation Matrix at the bottom recommends which to crystallize.
 
@@ -60,7 +61,7 @@ The Evaluation Matrix at the bottom recommends which to crystallize.
 2. `hades survey` — update the Arche with current code state
 3. `hades seed "What you want to achieve"` — log intent to Styx
 4. `hades summon "query"` — pull from project backlog
-5. `hades ignite` — Gemini generates 6 proposals into `prions.md`
+5. `hades ignite` — Gemini generates the 6+1 proposals into `prions.md`
 6. Review `prions.md`, pick a path, tell Claude in your **active session** to implement it
    - Claude reads `CLAUDE.md` (project rules) + `.hades/prions.md` (the chosen proposal)
    - No separate `execute` step — implementation happens in the ongoing conversation
