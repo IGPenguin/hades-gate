@@ -11,9 +11,21 @@ PLUGINS_JSON="$HOME/.claude/plugins/installed_plugins.json"
 echo "🔥 Installing Hades Gate skill..."
 
 mkdir -p "$PLUGIN_CACHE/skills/hades"
+mkdir -p "$PLUGIN_CACHE/.claude-plugin"
 mkdir -p "$HADES_CONFIG"
 
 cp "$REPO_DIR/claude-skill/skills/hades/SKILL.md" "$PLUGIN_CACHE/skills/hades/SKILL.md"
+
+cat > "$PLUGIN_CACHE/.claude-plugin/plugin.json" << 'PLUGINJSON'
+{
+  "name": "hades",
+  "description": "Hades Gate — generates six orthogonal implementation paths (The Hexalogy) plus a synthesis for any idea or task",
+  "author": {
+    "name": "Adam Svoboda",
+    "email": "eidamsvoboda@gmail.com"
+  }
+}
+PLUGINJSON
 cp "$REPO_DIR/.hades/papyrus.md" "$HADES_CONFIG/papyrus.md"
 cp "$REPO_DIR/.hades/manifesto.md" "$HADES_CONFIG/manifesto.md"
 
