@@ -4,7 +4,7 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface. Once initialized, the **Architect** (Gemini) analyzes your idea within your project context and proposes six core implementation paths (The Hexalogy), culminating in a final "Peak of Evolution" (The Zenith) for the **Builder** (Claude) to execute cleanly:<br>
+**Hades Gate** is a **High-Velocity Vibe-Coding** interface. The **Architect** analyzes your idea within your project context and proposes six core implementation paths (The Hexalogy), culminating in a final synthesis for the **Builder** to execute cleanly:<br>
 - **Option A:** The Spark (Fastest path)
 - **Option B:** The Weave (Systems integration)
 - **Option C:** The Apex (High polish)
@@ -13,30 +13,74 @@
 - **Option F:** The Chimera (Flashy hacks)
 - **The Synthesis:** (Refined convergence)
 
-### 🔪 Execution
-**Claude session:** *`read .hades/prions.md to implement The Zenith (The Synthesis)`*<br>
-- **Choose path:** Implement a selected proposal, combine multiple options or cherry-pick features as you like.<br>
-- <i>**Pro-tip:** Ask Claude to fill any blind spots it discovers when planning the execution by asking you questions.</i><br>
+---
 
-### 📌 Commands
-| Command | Action |
+## ⚡ Claude Code — Skill
+
+The Architect lives natively inside Claude Code as a `/hades` skill. No API keys, no Python CLI, no symlinks per project — install once, invoke from any session forever.
+
+### Setup
+
+```bash
+git clone https://github.com/your-repo/hades-gate.git
+cd hades-gate
+./install-skill.sh
+```
+
+Restart Claude Code. That's it.
+
+### Usage
+
+Type `/hades` in any Claude Code session. The Architect will:
+1. Read your project's `CLAUDE.md` if present (instant context, no survey needed)
+2. Ask three focused questions — intent, scope, constraints
+3. Generate the full Hexalogy + Synthesis inline
+
+Pick a path, tell Claude to implement it. No separate execution step.
+
+### Tweaking
+
+The proposal format and quality standards live in your home directory — edit them anytime, changes apply on the next `/hades` invocation:
+
+| File | Purpose |
 | :--- | :--- |
-| `hades status` | Checks the pulse of the Gate (drift detection, seed count). |
-| `hades link` | Automatically symlinks your project into the Gate (Ghostwire Protocol). |
-| `hades survey` | Scans your project and writes the DNA map to `arche.md`. |
-| `hades seed "idea"` | Plants your idea into `styx.md`. |
-| `hades summon "query"` | Searches your `TODOs.md` for a task and "summons" it as a seed. |
-| `hades ignite` | The ritual: Auto-surveys (if drifted) + generates Prions into `prions.md`. |
+| `~/.claude/hades/papyrus.md` | Proposal template — rename options, add fields, change structure |
+| `~/.claude/hades/manifesto.md` | Coding philosophy — quality standards applied to every proposal |
 
-### 🔱 Project pillars
-*   **Zero Pollution:** By using Ghostwire Protocol, your main repository remains "Pure", the transient proposals stay in the `hades-gate` directory, never polluting your project's git history.
-*   **Peripheral Vision:** By reading your versioned `TODOs.md`, the AI plans Path C (The Apex) with awareness of your future goals, ensuring immediate fixes don't block long-term vision.
-*   **Context Isolation:** The AI sees an optimized "Snapshot" of your project, preventing it from getting lost in the noise of your entire `.git` history or binary assets.
-*   **The Global Brain:** Improvements to your `manifesto.md` (coding standards) or `papyrus.md` (proposal structure) in the `hades-gate` repo immediately benefit all linked projects.
+---
 
-### 🔗 Project linking
+## 🧊 Gemini CLI — Legacy
 
-**Ghostwire Protocol** (a symlink) bridges the **Hades Gate** framework to your project, this keeps the "Brain" and "Rules" centralized while the local project "State" is ignored by git.
+The original implementation. More setup required, but works with a free Gemini account if you're not on Claude Code.
+
+**Prerequisites:** Python 3, [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed, a `GEMINI_API_KEY`.
+
+<details>
+<summary><b>Setup & Installation</b></summary>
+
+### 1. Clone & alias
+```bash
+git clone https://github.com/your-repo/hades-gate.git ~/Repositories/hades-gate
+```
+Add to your `~/.zshrc` or `~/.bashrc`:
+```bash
+alias hades='python3 ~/Repositories/hades-gate/hades.py'
+```
+
+### 2. Add your API key
+Create `.hades/erebus.env`:
+```bash
+GEMINI_API_KEY=your_key_here
+```
+
+### 3. Link a project (Ghostwire Protocol)
+```bash
+cd ~/Repositories/your-project
+hades link
+hades status
+```
+
+The Ghostwire symlink bridges the Gate's shared rules into your project while keeping transient state out of your git history:
 
 ```text
        [ HADES GATE ] (The Source)
@@ -47,45 +91,40 @@
       └── hades.py         (The Catalyst)
              │
              │      [ GHOSTWIRE ]
-             └──── (Symlink link) ────┐
-                                      ▼
-                           [ YOUR PROJECT ] (The Target)
-                           ~/Repositories/your-project/
-                           ├── .hades/ <─── (Shared State)
-                           ├── TODOs.md    (Versioned Roadmap)
-                           └── src/        (Your Codebase)
-```
-
-### 🧬 Important files
-*   **The Backlog (`TODOs.md`):** Your versioned, human-curated roadmap. Lives in your project root.
-*   **The Styx (`styx.md`):** The "Active Ritual" — transient seeds currently being processed.
-*   **The Arche (`arche.md`):** Project DNA (CLAUDE.md + File Tree + Backlog + API Surface).
-*   **The Prions (`prions.md`):** Gemini's output — the Hexalogy + the Synthesis.
-*   **The Spark (`hades.py`):** The catalyst logic that bridges the gate and manages the ritual.
-
-## ⚙️ Setup & Installation
-
-<details>
-<summary><b>Click to expand the installation steps...</b></summary>
-
-### 1. Clone & Install
-```bash
-git clone https://github.com/your-repo/hades-gate.git ~/Repositories/hades-gate
-cd ~/Repositories/hades-gate
-./install.sh
-```
-
-### 2. Global Alias
-Add this to your `~/.zshrc` or `~/.bashrc`:
-```bash
-alias hades='python3 ~/Repositories/hades-gate/hades.py'
-```
-
-### 3. The Ghostwire Ritual
-Link any project into the Gate to start the cycle:
-```bash
-cd ~/Repositories/your-project
-hades link
-hades status
+             └──── (Symlink) ──────────┐
+                                        ▼
+                             [ YOUR PROJECT ]
+                             ~/Repositories/your-project/
+                             ├── .hades/ ←── (Shared State)
+                             ├── TODOs.md    (Versioned Roadmap)
+                             └── src/
 ```
 </details>
+
+### Commands
+
+| Command | Action |
+| :--- | :--- |
+| `hades link` | Ghostwire symlink into the active project |
+| `hades survey` | Scan project DNA into `arche.md` |
+| `hades seed "idea"` | Plant intent into `styx.md` |
+| `hades summon "query"` | Pull a task from `TODOs.md` as a seed |
+| `hades ignite` | Generate Prions via Gemini into `prions.md` |
+| `hades status` | Drift detection + seed count |
+
+### Workflow
+
+1. `cd` into your linked project
+2. `hades survey` — capture project DNA
+3. `hades seed "what you want to achieve"`
+4. `hades ignite` — Gemini generates the Hexalogy into `prions.md`
+5. Open a Claude session: *`read .hades/prions.md and implement The Synthesis`*
+
+### Important files
+
+| File | Role |
+| :--- | :--- |
+| `styx.md` | Active seeds — raw intent being processed |
+| `arche.md` | Project DNA (survey output) |
+| `prions.md` | Gemini's output — the Hexalogy + Synthesis |
+| `erebus.env` | API key storage (never committed) |

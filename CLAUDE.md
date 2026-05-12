@@ -4,74 +4,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-**Hades Gate** is a meta-framework — not a project itself, but a structured loop for turning ideas into code across any project. It separates the **Architect** role (Gemini analyzes and proposes) from the **Builder** role (Claude implements). This repo contains only the framework tooling; actual projects symlink to `.hades/` via the Ghostwire protocol.
+**Hades Gate** is a meta-framework for turning ideas into code. It provides the **Architect** role: analyzing intent, understanding project context, and proposing six distinct implementation paths (The Hexalogy) plus a synthesis.
 
-## Commands
+The primary delivery mechanism is a **Claude Code skill** (`/hades`). The legacy path uses a Python CLI + Gemini API — documented in `GEMINI.md`.
 
-All interaction happens via the `hades` CLI (aliased to `hades.py`).
+## Repo Structure
 
-```bash
-hades link                # Setup the Ghostwire symlink in the active project
-hades status              # Check the pulse (drift detection, seed count)
-hades survey              # Cultivate the Arche — scan the active project
-hades seed "Intent"       # Plant a seed into .hades/styx.md
-hades summon "query"      # Pull tasks from the project backlog
-hades ignite              # Strike the flint — auto-surveys if drift detected
-```
+| Path | Purpose |
+|------|---------|
+| `claude-skill/skills/hades/SKILL.md` | The `/hades` skill definition |
+| `install-skill.sh` | One-command installer for the skill |
+| `.hades/papyrus.md` | Proposal template (source of truth for the repo) |
+| `.hades/manifesto.md` | Coding philosophy (source of truth for the repo) |
+| `hades.py` | Legacy Gemini CLI catalyst |
 
-## Architecture
+## The Skill
 
-### The `.hades/` Folder
+The `/hades` skill is installed to `~/.claude/plugins/cache/local/hades/1.0.0/` and reads its user-tweakable config from:
+- `~/.claude/hades/papyrus.md` — proposal output structure
+- `~/.claude/hades/manifesto.md` — quality standards
 
-| File | Role | Git-tracked? |
-|------|------|-------------|
-| `manifesto.md` | Global coding standards for the Architect | Yes |
-| `papyrus.md` | The 7-path proposal template | Yes |
-| `styx.md` | Active seeds (raw intent) | **No** |
-| `arche.md` | Project DNA (Survey output) | **No** |
-| `prions.md` | 7-path proposals (Ignition output) | **No** |
-| `erebus.env` | API keys (`GEMINI_API_KEY`) | **No** |
+When modifying the skill, update `claude-skill/skills/hades/SKILL.md` in this repo. Users re-run `install-skill.sh` to pick up changes, or copy the file manually.
 
-### The Ghostwire Protocol
+## The Proposal Format (Papyrus)
 
-Projects use `hades link` to automatically symlink their `.hades/` directory to this repo's source. This ensures shared rules but project-specific state.
+Every ignition produces 6 core paths (The Hexalogy) plus one synthesis:
+- **Option A — The Spark:** minimal friction, immediate result
+- **Option B — The Weave:** leveraging existing infrastructure
+- **Option C — The Apex:** high quality, clean architecture
+- **Option D — The Echo:** proven standard patterns
+- **Option E — The Rift:** experimental, outside-the-box
+- **Option F — The Chimera:** flashy results, pragmatic interior
+- **The Synthesis:** curated convergence of the strongest elements
 
-### `hades.py` Logic
-
-- **Smart Survey:** Uses `git diff --stat` to detect "Drift". If the project state has changed significantly since the last survey, `hades ignite` will prompt for a re-survey.
-- **Argparse CLI:** Standardized command structure with built-in help.
-- **JS Parsing:** Extracts skeletons (signatures) to keep context token-efficient.
-
-### The Proposal Format (Papyrus)
-
-Every `ignite` run produces 6 core paths (The Hexalogy) and one ultimate synthesis (The Zenith) in `prions.md`:
-- **Option A — The Spark (Fastest path):** minimal friction, immediate result
-- **Option B — The Weave (Systems integration):** leveraging existing opportunities
-- **Option C — The Apex (High quality):** high quality, polished, clean architecture
-- **Option D — The Echo (Standard patterns):** common or proven existing solution
-- **Option E — The Rift (Experimental):** outside-the-box or novel approach
-- **Option F — The Chimera (Flashy hacks):** flashy results with a pragmatic interior
-- **The Synthesis (Refined convergence):** a curated selection from the above
-
-The Evaluation Matrix at the bottom recommends which to crystallize.
-
-## Workflow
-
-1. `cd` into the active project (the one with the `.hades` symlink)
-2. `hades survey` — update the Arche with current code state
-3. `hades seed "What you want to achieve"` — log intent to Styx
-4. `hades summon "query"` — pull from project backlog
-5. `hades ignite` — Gemini generates the 6+1 proposals into `prions.md`
-6. Review `prions.md`, pick a path, tell Claude in your **active session** to implement it
-   - Claude reads `CLAUDE.md` (project rules) + `.hades/prions.md` (the chosen proposal)
-   - No separate `execute` step — implementation happens in the ongoing conversation
-
-## Adding a New Project
-
-1. Symlink `.hades` as above
-2. Add to the project's `CLAUDE.md`:
-   ```markdown
-   ## Hades Gate Integration
-   - Before starting any task, check `.hades/prions.md` for the latest proposals.
-   ```
-3. Run `hades survey` from the project root to populate `arche.md`
+The Oracle section at the end recommends which path to crystallize and why.
