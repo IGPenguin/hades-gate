@@ -40,6 +40,12 @@ Type `/hades` in any [Claude Code](https://claude.com/product/claude-code) sessi
 
 Pick a path, tell Claude to implement it. No separate execution step.
 
+### History
+
+Every `/hades` run saves a record to `.hades/YYYY-MM-DD-HHMM-slug.md` - intent, scope, constraints + the analysis.
+
+The skill adds `.hades/` to your `.gitignore` automatically on first use, so your history stays local.
+
 ### Tweaking
 
 The proposal template and thinking rules live in your home directory - changes take effect immediately.

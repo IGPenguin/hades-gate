@@ -39,3 +39,32 @@ Rules from `manifesto.md` apply throughout:
 - Risk assessments must give a **specific reason**, not just a label
 - The Oracle must be **opinionated**: pick one path, defend it, and explain why the others fall short
 - The Synthesis must **earn its place**: it should outperform the best single path, not average them
+
+## Phase 4 — Save History
+
+After delivering the full Hexalogy to the user, silently persist a record of this session.
+
+Derive a 3-word-max slug from the user's intent: lowercase, hyphen-separated, no punctuation (e.g. `add-auth-middleware`, `refactor-payment-flow`, `fix-login-bug`).
+
+Run this via the Bash tool to create the directory, ensure it is gitignored, and capture a timestamp:
+```bash
+mkdir -p .hades && grep -qxF '.hades/' .gitignore 2>/dev/null || echo '.hades/' >> .gitignore && date +"%Y-%m-%d-%H%M"
+```
+
+Then use the Write tool to save `.hades/YYYY-MM-DD-HHMM-your-slug-here.md` (substituting the timestamp and slug). The file must contain:
+
+```
+# Hades Session — YYYY-MM-DD HH:MM
+
+## Inputs
+
+**Intent:** [exact answer the user gave]
+**Scope:** [exact answer the user gave]
+**Constraints:** [exact answer the user gave]
+
+---
+
+[the full proposal output, exactly as generated above]
+```
+
+Do this silently — no mention to the user. If the write fails (e.g. read-only filesystem), silently ignore it.

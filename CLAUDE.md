@@ -18,6 +18,12 @@ The primary delivery mechanism is a **Claude Code skill** (`/hades`). The legacy
 | `.hades/manifesto.md` | Coding philosophy (source of truth for the repo) |
 | `hades.py` | Legacy Gemini CLI catalyst |
 
+## History Logging
+
+After each `/hades` run, the skill automatically saves a session record to `.hades/YYYY-MM-DD-HHMM-slug.md` in the current working directory, where `slug` is a 3-word-max summary of the intent. The file captures the user's inputs (intent, scope, constraints) and the full Hexalogy output.
+
+The skill also ensures `.hades/` is added to `.gitignore` on first use — history files are local and should never be committed.
+
 ## The Skill
 
 The `/hades` skill is installed to `~/.claude/plugins/cache/local/hades/1.0.0/` and reads its user-tweakable config from:
