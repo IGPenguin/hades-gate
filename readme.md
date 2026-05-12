@@ -4,7 +4,7 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface. The **Architect** analyzes your idea within your project context and proposes six core implementation paths (The Hexalogy), culminating in a final synthesis for the **Builder** to execute cleanly:<br>
+**Hades Gate** is a **High-Velocity Vibe-Coding** interface. The **Architect** analyzes your idea within your project context and proposes six orthogonal implementation paths, culminating in a final synthesis for the **Builder** to execute:<br>
 - **Option A:** The Spark (Fastest path)
 - **Option B:** The Weave (Systems integration)
 - **Option C:** The Apex (High polish)
@@ -17,7 +17,8 @@
 
 ## ⚡ Claude Code — Skill
 
-The Architect lives natively inside Claude Code as a `/hades` skill. No API keys, no Python CLI, no symlinks per project — install once, invoke from any session forever.
+The Architect lives natively inside Claude Code as a `/hades` skill.<br>
+No API keys, no Python CLI, no symlinks per project - install once, invoke from any session forever.
 
 ### Setup
 
@@ -33,7 +34,7 @@ Restart Claude Code. That's it.
 
 Type `/hades` in any Claude Code session. The Architect will:
 1. Read your project's `CLAUDE.md` if present (instant context, no survey needed)
-2. Ask three focused questions — intent, scope, constraints
+2. Ask three focused questions - intent, scope, constraints
 3. Generate the full Hexalogy + Synthesis inline
 
 Pick a path, tell Claude to implement it. No separate execution step.
@@ -49,9 +50,9 @@ The proposal format and quality standards live in your home directory — edit t
 
 ---
 
-## 🧊 Gemini CLI — Legacy
+## 🧞‍♂️ Gemini CLI — Legacy
 
-The original implementation. More setup required, but works with a free Gemini account if you're not on Claude Code.
+The original implementation. Setup required, but works with a free Gemini account.
 
 **Prerequisites:** Python 3, [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed, a `GEMINI_API_KEY`.
 
