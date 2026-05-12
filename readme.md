@@ -17,7 +17,8 @@
 
 ## ⚡ Claude Code — Skill
 
-The Architect lives natively inside Claude Code as a `/hades` skill.<br>
+The Architect lives natively inside Claude Code as a `/hades` skill.
+
 No API keys, no Python CLI, no symlinks per project - install once, invoke from any session forever.
 
 ### Setup
@@ -32,7 +33,7 @@ Restart Claude Code. That's it.
 
 ### Usage
 
-Type `/hades` in any Claude Code session. The Architect will:
+Type `/hades` in any [Claude Code](https://claude.com/product/claude-code) session. The Architect will:
 1. Read your project's `CLAUDE.md` if present (instant context, no survey needed)
 2. Ask three focused questions - intent, scope, constraints
 3. Generate the full Hexalogy + Synthesis inline
@@ -41,7 +42,7 @@ Pick a path, tell Claude to implement it. No separate execution step.
 
 ### Tweaking
 
-The proposal format and quality standards live in your home directory — edit them anytime, changes apply on the next `/hades` invocation:
+The proposal template and thinking rules live in your home directory - changes take effect immediately.
 
 | File | Purpose |
 | :--- | :--- |
