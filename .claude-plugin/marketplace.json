@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "hades-gate",
+  "description": "Hades Gate — Claude Code skills by Adam Svoboda",
+  "owner": {
+    "name": "Adam Svoboda",
+    "email": "eidamsvoboda@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "hades",
+      "description": "Hades Gate — generates six orthogonal implementation paths (The Hexalogy) plus a synthesis for any idea or task",
+      "author": {
+        "name": "Adam Svoboda"
+      },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/IGPenguin/hades-gate.git",
+        "path": "claude-skill",
+        "ref": "chaos"
+      }
+    }
+  ]
+}
