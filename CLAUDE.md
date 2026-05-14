@@ -30,7 +30,7 @@ The `/hades` skill is installed to `~/.claude/plugins/cache/local/hades/1.0.0/` 
 - `~/.claude/hades/papyrus.md` — proposal output structure
 - `~/.claude/hades/manifesto.md` — quality standards
 
-When modifying the skill, update `claude-skill/skills/hades/SKILL.md` in this repo. Users re-run `install-skill.sh` to pick up changes, or copy the file manually.
+When modifying the skill, update `claude-skill/skills/hades/SKILL.md` in this repo. Commit and push, then re-run `install-skill.sh` to pick up changes (the installer pulls from GitHub).
 
 ## The Proposal Format (Papyrus)
 
