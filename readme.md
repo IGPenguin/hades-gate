@@ -59,6 +59,7 @@ The proposal template and thinking rules live in your home directory - changes t
 
 <details>
 <summary>The original implementation. Setup required, but works with a free Gemini account.</summary>
+<br>
 
 **Prerequisites:** Python 3, [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed, a `GEMINI_API_KEY`.
 
@@ -138,4 +139,4 @@ The Ghostwire symlink bridges the Gate's shared rules into your project while ke
 
 ## 🔗 Related
 
-- 🌊 [Styx FLow](https://github.com/IGPenguin/styx-flow) - Claude Skill: Turn raw notes into a prioritized backlog (`/styx`)
+- 🌊 **[Styx Flow](https://github.com/IGPenguin/styx-flow)** - Claude Skill: Turn raw notes into a prioritized backlog (`/styx`)
