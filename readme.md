@@ -15,7 +15,7 @@
 
 ---
 
-## ⚡ Claude Code — Skill
+## ⚡ Claude Code - Skill
 
 The Architect lives natively inside Claude Code as a `/hades` skill.
 
@@ -55,18 +55,16 @@ The proposal template and thinking rules live in your home directory - changes t
 | `~/.claude/hades/papyrus.md` | Proposal template — rename options, add fields, change structure |
 | `~/.claude/hades/manifesto.md` | Coding philosophy — quality standards applied to every proposal |
 
----
+## 🧞‍♂️ Gemini CLI - Legacy
 
-## 🧞‍♂️ Gemini CLI — Legacy
-
-The original implementation. Setup required, but works with a free Gemini account.
+<details>
+<summary>The original implementation. Setup required, but works with a free Gemini account.</summary>
 
 **Prerequisites:** Python 3, [Gemini CLI](https://github.com/google-gemini/gemini-cli) installed, a `GEMINI_API_KEY`.
 
-<details>
-<summary><b>Setup & Installation</b></summary>
+### Setup & Installation
 
-### 1. Clone & alias
+#### 1. Clone & alias
 ```bash
 git clone https://github.com/your-repo/hades-gate.git ~/Repositories/hades-gate
 ```
@@ -75,13 +73,13 @@ Add to your `~/.zshrc` or `~/.bashrc`:
 alias hades='python3 ~/Repositories/hades-gate/hades.py'
 ```
 
-### 2. Add your API key
+#### 2. Add your API key
 Create `.hades/erebus.env`:
 ```bash
 GEMINI_API_KEY=your_key_here
 ```
 
-### 3. Link a project (Ghostwire Protocol)
+#### 3. Link a project (Ghostwire Protocol)
 ```bash
 cd ~/Repositories/your-project
 hades link
@@ -107,7 +105,6 @@ The Ghostwire symlink bridges the Gate's shared rules into your project while ke
                              ├── TODOs.md    (Versioned Roadmap)
                              └── src/
 ```
-</details>
 
 ### Commands
 
@@ -136,3 +133,9 @@ The Ghostwire symlink bridges the Gate's shared rules into your project while ke
 | `arche.md` | Project DNA (survey output) |
 | `prions.md` | Gemini's output — the Hexalogy + Synthesis |
 | `erebus.env` | API key storage (never committed) |
+
+</details>
+
+## 🔗 Related
+
+- 🌊 [Styx FLow](https://github.com/IGPenguin/styx-flow) - Claude Skill: Turn raw notes into a prioritized backlog (`/styx`)
