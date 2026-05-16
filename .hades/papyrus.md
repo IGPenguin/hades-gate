@@ -7,7 +7,7 @@
 - **The Price:** [What is sacrificed for speed (technical debt, edge cases, scalability)]
 - **Evaluation:** [Efficiency X/10 | Risk: Safe/Caution/High Risk + Reason oneliner]
 
-## Option B: The Weave *(Systems integration)*
+## Option B: The Weave *(Existing systems integration)*
 - **The Vision:** [How this leverages existing infrastructure or resolves technical debt]
 - **The Mortal Experience:** [How the user will perceive the result | Output sample]
 - **The Weight:** [Estimated effort: file count / line impact]
@@ -21,7 +21,7 @@
 - **The Legacy:** [How this strengthens the long-term vision and architecture]
 - **Evaluation:** [Efficiency X/10 | Risk: Safe/Caution/High Risk + Reason oneliner]
 
-## Option D: The Echo *(Standard patterns & reliability)*
+## Option D: The Echo *(Standard patterns, reliability)*
 - **The Vision:** [Implementation using proven industry standards or battle-tested patterns]
 - **The Mortal Experience:** [How the user will perceive the result | Output sample]
 - **The Weight:** [Estimated effort: file count / line impact]
@@ -44,7 +44,7 @@
 
 ---
 
-# The Synthesis *(Refined convergence)*
+# The Synthesis *(Cherry-picked traits from the proposals)*
 - **The Vision:** [A curated merge of the strongest traits from multiple paths]
 - **The Mortal Experience:** [How the user will perceive the result | Output sample]
 - **The Weight:** [Estimated effort: file count / line impact]

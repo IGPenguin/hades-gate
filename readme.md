@@ -4,36 +4,24 @@
 
 ## 🔥 Materialize your ideas into reality
 
-**Hades Gate** is a **High-Velocity Vibe-Coding** interface. The **Architect** analyzes your idea within your project context and proposes six orthogonal implementation paths, culminating in a final synthesis for the **Builder** to execute:<br>
-- **Option A:** The Spark (Fastest path)
-- **Option B:** The Weave (Systems integration)
-- **Option C:** The Apex (High polish)
-- **Option D:** The Echo (Standard patterns)
-- **Option E:** The Rift (Experimental)
-- **Option F:** The Chimera (Flashy hacks)
-- **The Synthesis:** (Refined convergence)
+**Hades Gate** analyzes your raw feature idea, task from 🌊 **[Styx Flow](https://github.com/IGPenguin/styx-flow)** or any similar input within your project context and proposes six orthogonal implementation paths, culminating in a final synthesis:
+- **Option A:** The Spark (Fastest path, minimum friction)
+- **Option B:** The Weave (Existing systems integration)
+- **Option C:** The Apex (High quality, clean architecture)
+- **Option D:** The Echo (Standard patterns, reliability)
+- **Option E:** The Rift (Experimental, high-risk/high-reward)
+- **Option F:** The Chimera (Flashy exterior, pragmatic hacks)
+- **The Synthesis:** (Cherry-picked traits from the proposals)
 
 ---
 
 ## ⚡ Claude Code - Skill
 
-The Architect lives natively inside Claude Code as a `/hades` skill.
-
-No API keys, no Python CLI, no symlinks per project - install once, invoke from any session forever.
-
-### Setup
-
-```bash
-git clone https://github.com/your-repo/hades-gate.git
-cd hades-gate
-./install-skill.sh
-```
-
-Restart Claude Code. That's it.
+Hades Gate lives natively inside Claude Code as a `/hades` skill. No API keys, no config per project. Install once, invoke from any session.
 
 ### Usage
 
-Type `/hades` in any [Claude Code](https://claude.com/product/claude-code) session. The Architect will:
+Type `/hades` in any [Claude Code](https://claude.com/product/claude-code) session, provide raw text input, link files or select existing item from `TODOs.md`.
 1. Read your project's `CLAUDE.md` if present (instant context, no survey needed)
 2. Ask three focused questions - intent, scope, constraints
 3. Generate the full Hexalogy + Synthesis inline
@@ -54,6 +42,24 @@ The proposal template and thinking rules live in your home directory - changes t
 | :--- | :--- |
 | `~/.claude/hades/papyrus.md` | Proposal template — rename options, add fields, change structure |
 | `~/.claude/hades/manifesto.md` | Coding philosophy — quality standards applied to every proposal |
+
+### Setup
+
+```bash
+git clone https://github.com/your-repo/hades-gate.git
+cd hades-gate
+./install-skill.sh
+```
+
+Then restart Claude Code.
+
+### Updating
+
+```bash
+git pull && ./install-skill.sh
+```
+
+And restart Claude Code.
 
 ## 🧞‍♂️ Gemini CLI - Legacy
 
