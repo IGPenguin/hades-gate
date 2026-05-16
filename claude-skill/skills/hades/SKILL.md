@@ -21,6 +21,8 @@ These files are user-editable. Always read them fresh; never rely on cached know
 
 **First**, check if a `CLAUDE.md` exists in the current working directory. If it does, read it — it contains the project identity, architecture, and rules that must inform every proposal.
 
+**Also**, silently attempt to read `DESIGN.md` in the current working directory. If present, treat it as authoritative design intent — every proposal must respect it, and any path that conflicts with it must call that out explicitly in its trade-offs.
+
 **Then**, run the questionnaire. Ask these three questions conversationally, one at a time, waiting for the answer before asking the next:
 
 1. **Intent** — "What do you want to achieve? Describe the goal, feature, fix, or change as concretely as you can."
