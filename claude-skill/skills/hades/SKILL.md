@@ -21,7 +21,7 @@ These files are user-editable. Always read them fresh; never rely on cached know
 
 **First**, check if a `CLAUDE.md` exists in the current working directory. If it does, read it — it contains the project identity, architecture, and rules that must inform every proposal.
 
-**Also**, silently attempt to read `DESIGN.md` in the current working directory. If present, treat it as authoritative design intent — every proposal must respect it, and any path that conflicts with it must call that out explicitly in its trade-offs.
+**Also**, silently attempt to read `DESIGN.md` in the current working directory; if not found, try `docs/DESIGN.md`. If present, treat it as authoritative design intent — every proposal must respect it, and any path that conflicts with it must call that out explicitly in its trade-offs. Also silently attempt to read `docs/GENESIS.md` and `docs/CONTENT.md` if present — they provide world-building, lore, and tone context that shapes proposals.
 
 **Then**, run the questionnaire. Ask these three questions conversationally, one at a time, waiting for the answer before asking the next:
 
