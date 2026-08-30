@@ -40,8 +40,8 @@ The proposal template and thinking rules live in your home directory - changes t
 
 | File | Purpose |
 | :--- | :--- |
-| `~/.claude/hades/papyrus.md` | Proposal template — rename options, add fields, change structure |
-| `~/.claude/hades/manifesto.md` | Coding philosophy — quality standards applied to every proposal |
+| `~/.claude/hades/papyrus.md` | Proposal template - rename options, add fields, change structure |
+| `~/.claude/hades/manifesto.md` | Coding philosophy - quality standards applied to every proposal |
 
 ### Setup
 
@@ -127,18 +127,18 @@ The Ghostwire symlink bridges the Gate's shared rules into your project while ke
 ### Workflow
 
 1. `cd` into your linked project
-2. `hades survey` — capture project DNA
+2. `hades survey` - capture project DNA
 3. `hades seed "what you want to achieve"`
-4. `hades ignite` — Gemini generates the Hexalogy into `prions.md`
+4. `hades ignite` - Gemini generates the Hexalogy into `prions.md`
 5. Open a Claude session: *`read .hades/prions.md and implement The Synthesis`*
 
 ### Important files
 
 | File | Role |
 | :--- | :--- |
-| `styx.md` | Active seeds — raw intent being processed |
+| `styx.md` | Active seeds - raw intent being processed |
 | `arche.md` | Project DNA (survey output) |
-| `prions.md` | Gemini's output — the Hexalogy + Synthesis |
+| `prions.md` | Gemini's output - the Hexalogy + Synthesis |
 | `erebus.env` | API key storage (never committed) |
 
 </details>

@@ -23,12 +23,12 @@
 
 ## Execution
 When "Igniting" seeds from styx.md, always produce 6 core Prions (The Hexalogy) plus one ultimate outcome:
-1. **Option A — The Spark (Fastest path):** Minimal friction, immediate result.
-2. **Option B — The Weave (Systems integration):** Leveraging infrastructure for unforeseen efficiency.
-3. **Option C — The Sovereign Path (High polish):** High quality, clean architecture.
-4. **Option D — The Echo (Standard patterns):** A common or proven existing solution.
-5. **Option E — The Rift (Experimental):** Outside-the-box, novel, or highly efficient logic.
-6. **Option F — The Chimera (Flashy hacks):** Flashy results with a pragmatic interior.
+1. **Option A - The Spark (Fastest path):** Minimal friction, immediate result.
+2. **Option B - The Weave (Systems integration):** Leveraging infrastructure for unforeseen efficiency.
+3. **Option C - The Sovereign Path (High polish):** High quality, clean architecture.
+4. **Option D - The Echo (Standard patterns):** A common or proven existing solution.
+5. **Option E - The Rift (Experimental):** Outside-the-box, novel, or highly efficient logic.
+6. **Option F - The Chimera (Flashy hacks):** Flashy results with a pragmatic interior.
 
 ---
 **The Synthesis (Refined convergence):** A curated selection of elements from the Hexalogy above, representing the most balanced or potent path forward.
